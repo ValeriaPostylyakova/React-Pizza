@@ -14,7 +14,11 @@
       margin-right: 8px;
     }
 
-    span {
+    button {
+      border: none;
+      background-color: #fff;
+      font-size: 1rem;
+      outline: none;
       color: $orange;
       border-bottom: 1px dashed $orange;
       cursor: pointer;

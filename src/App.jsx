@@ -1,15 +1,17 @@
 import React from 'react';
+import axios from 'axios';
+
 import { Header } from './components/Header.jsx';
 import { Categories } from './components/Categories.jsx';
 import { Sort } from './components/Sort.jsx';
-import { PizzaBlock } from './components/PizzaBlock.jsx';
-
-import axios from 'axios';
+import { PizzaBlockList } from './components/PizzaBlockList.jsx';
+import { PizzaBlockSkeletonList } from './components/PizzaBlockSkeletonList.jsx';
 
 import './scss/app.scss';
 
 const App = () => {
     const [pizzaData, setPizzaData] = React.useState([]);
+    const [isLoading, setIsLoading] = React.useState(true);
 
     React.useEffect(() => {
         async function axiosData() {
@@ -22,6 +24,8 @@ const App = () => {
                 // alert('Ошибка при получении данных');
                 console.error(err);
             }
+
+            setIsLoading(false);
         }
 
         axiosData();
@@ -38,9 +42,11 @@ const App = () => {
                     </div>
                     <h2 className="content__title">Все пиццы</h2>
                     <div className="content__items">
-                        {pizzaData.map((dataPropsPizza, indexPizza) => (
-                            <PizzaBlock {...dataPropsPizza} key={indexPizza} />
-                        ))}
+                        {isLoading ? (
+                            <PizzaBlockSkeletonList />
+                        ) : (
+                            <PizzaBlockList pizzaData={pizzaData} />
+                        )}
                     </div>
                 </div>
             </div>
