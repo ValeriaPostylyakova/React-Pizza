@@ -3,12 +3,27 @@
 .categories {
   ul {
     display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 15px;
+    scrollbar-color: #dfdede #ffffff;
+    scrollbar-width: thin;
+
+    @media screen and (max-width: 590px) {
+      margin-left: 4rem;
+    }
+
+    @media screen and (max-width: 490px) {
+      margin-left: -1rem;
+      flex-wrap: nowrap;
+      max-width: 290px;
+      overflow-x: scroll;
+    }
 
     li {
       background-color: #f9f9f9;
       padding: 13px 30px;
       border-radius: 30px;
-      margin-right: 10px;
       font-weight: bold;
       cursor: pointer;
       transition: background-color 0.1s ease-in-out;

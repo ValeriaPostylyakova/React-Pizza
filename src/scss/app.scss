@@ -13,6 +13,13 @@ body {
   margin: 50px auto;
   border-radius: 10px;
   max-width: 1400px;
+
+  @media screen and (max-width: 600px) {
+    width: 100vw;
+    height: 100%;
+    margin: 0;
+    border-radius: 0;
+  }
 }
 
 .content {
@@ -23,15 +30,26 @@ body {
   }
 
   &__items {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 11px;
   }
 
   &__top {
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    @media screen and (max-width: 1307px){
+        align-items: start;
+    }
+
+    @media screen and (max-width: 590px){
+      flex-direction: column-reverse;
+      gap: 2rem;
+      align-items: center;
+      justify-content: center;
+    }
   }
 }
 
@@ -49,6 +67,7 @@ body {
 }
 
 .cart {
+  width: 100%;
   &__top {
     display: flex;
     justify-content: space-between;
@@ -60,17 +79,16 @@ body {
     align-items: center;
     font-size: 32px;
 
-    svg {
-      position: relative;
-      top: -2px;
-      width: 30px;
-      height: 30px;
-      margin-right: 10px;
-      path {
-        stroke: $black;
-        stroke-width: 1.9;
+      img {
+        width: 30px;
+        height: 30px;
+        margin-right: 0.7rem;
+        margin-bottom: 6px;
       }
     }
+
+  .content__items {
+    display: block;
   }
 
   &__clear {
@@ -253,12 +271,8 @@ body {
           }
         }
 
-        svg {
+        img {
           margin-right: 12px;
-          path {
-            fill: transparent;
-            stroke-width: 2;
-          }
         }
       }
 
@@ -273,12 +287,21 @@ body {
 
   &--empty {
     margin: 0 auto;
-    width: 560px;
+    max-width: 560px;
     text-align: center;
 
     h2 {
       font-size: 32px;
       margin-bottom: 10px;
+      white-space: nowrap;
+
+      @media screen and (max-width: 445px) {
+        font-size: 28px;
+      }
+
+      @media screen and (max-width: 365px) {
+        font-size: 25px;
+      }
     }
 
     p {
@@ -286,17 +309,24 @@ body {
       line-height: 145.4%;
       letter-spacing: 0.01em;
       color: #777777;
-    }
 
-    icon {
-      position: relative;
-      top: 2px;
+      @media screen and (max-width: 577px) {
+        display: none;
+      }
     }
 
     img {
       display: block;
-      width: 300px;
+      max-width: 300px;
       margin: 45px auto 60px;
+
+      @media screen and (max-width: 577px) {
+        width: 250px;
+      }
+
+      @media screen and (max-width: 365px) {
+        width: 200px;
+      }
     }
 
     .button--black {
@@ -305,6 +335,37 @@ body {
       margin: 0 auto;
       font-weight: 600;
       font-size: 18px;
+    }
+
+  }
+}
+
+
+@media screen and (max-width: 1500px) {
+  .content {
+    &__items {
+      grid-template-columns: repeat(3, 1fr);
+      place-items: center;
+    }
+  }
+}
+
+@media screen and (max-width: 1050px) {
+  .content {
+    &__items {
+      grid-template-columns: repeat(2, 1fr);
+      place-items: center;
+      gap: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 753px) {
+  .content {
+    &__items {
+      grid-template-columns: 1fr;
+      place-items: center;
+      gap: 0;
     }
   }
 }

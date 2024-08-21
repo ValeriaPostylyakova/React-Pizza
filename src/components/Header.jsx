@@ -5,13 +5,15 @@ export const Header = () => {
     return (
         <header className="header">
             <div className="container">
-                <div className="header__logo">
-                    <img width="38" src={logo} alt="Pizza logo" />
-                    <div>
-                        <h1>React Pizza</h1>
-                        <p>самая вкусная пицца во вселенной</p>
+                <Link to="/">
+                    <div className="header__logo">
+                        <img width="38" src={logo} alt="Pizza logo" />
+                        <div>
+                            <h1>React Pizza</h1>
+                            <p>самая вкусная пицца</p>
+                        </div>
                     </div>
-                </div>
+                </Link>
                 <div className="header__cart">
                     <Link to="drawer" className="button button--cart">
                         <span>520 ₽</span>

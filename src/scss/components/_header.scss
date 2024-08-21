@@ -28,5 +28,11 @@
     p {
       color: #7b7b7b;
     }
+
+    @media screen and (max-width: 456px) {
+        div {
+          display: none;
+        }
+    }
   }
 }

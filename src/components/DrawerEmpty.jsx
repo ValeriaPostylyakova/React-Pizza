@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import drawer from '../assets/img/empty-cart.png';
+import React from 'react';
 
 const DrawerEmpty = () => {
     return (
@@ -9,7 +10,7 @@ const DrawerEmpty = () => {
                 <div className="container container--cart">
                     <div className="cart cart--empty">
                         <h2>
-                            Корзина пустая <icon>😕</icon>
+                            Корзина пустая <span>😕</span>
                         </h2>
                         <p>
                             Вероятней всего, вы не заказывали ещё пиццу.
