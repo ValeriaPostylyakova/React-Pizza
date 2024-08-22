@@ -6,15 +6,24 @@ import { Sort } from '../components/Sort.jsx';
 import { PizzaBlockSkeleton } from '../components/PizzaBlockSkeleton.jsx';
 import { PizzaBlock } from '../components/PizzaBlock.jsx';
 
-const Home = () => {
+const Home = ({ searchValue }) => {
     const [pizzaData, setPizzaData] = React.useState([]);
     const [isLoading, setIsLoading] = React.useState(true);
+
+    const [categoryId, setCategoryId] = React.useState(0);
+    const [sortValue, setSortValue] = React.useState({
+        name: 'популярности',
+        sort: '-rating',
+    });
+
+    const categoryFilter = `${categoryId > 0 ? `category=${categoryId}` : ''}`;
 
     React.useEffect(() => {
         async function axiosData() {
             try {
+                setIsLoading(true);
                 const { data } = await axios.get(
-                    'https://66c34050d057009ee9bf9808.mockapi.io/pizza'
+                    `https://7ca40464e2c51584.mokky.dev/pizza?${categoryFilter}&sortBy=${sortValue.sort}`
                 );
                 setPizzaData(data);
             } catch (err) {
@@ -26,12 +35,19 @@ const Home = () => {
         }
 
         axiosData();
-    });
+    }, [categoryId, sortValue]);
+
     return (
         <>
             <div className="content__top">
-                <Categories />
-                <Sort />
+                <Categories
+                    categoryId={categoryId}
+                    onClickCategory={(index) => setCategoryId(index)}
+                />
+                <Sort
+                    sortValue={sortValue}
+                    onClickSortValue={(obj) => setSortValue(obj)}
+                />
             </div>
             <h2 className="content__title">Все пиццы</h2>
             <div className="content__items">
@@ -43,12 +59,19 @@ const Home = () => {
                     </>
                 ) : (
                     <>
-                        {pizzaData.map((dataPropsPizza) => (
-                            <PizzaBlock
-                                {...dataPropsPizza}
-                                key={dataPropsPizza.id}
-                            />
-                        ))}
+                        {pizzaData
+                            .filter((dataPizza) => {
+                                const pizzaName = dataPizza.title.toLowerCase();
+                                return pizzaName.includes(
+                                    searchValue.toLowerCase()
+                                );
+                            })
+                            .map((dataPropsPizza) => (
+                                <PizzaBlock
+                                    {...dataPropsPizza}
+                                    key={dataPropsPizza.id}
+                                />
+                            ))}
                     </>
                 )}
             </div>

@@ -6,6 +6,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    cursor: pointer;
 
     @media screen and (max-width: 1307px) {
       margin-top: 0.5rem;
@@ -40,7 +41,7 @@
     border-radius: 10px;
     overflow: hidden;
     padding: 10px 0;
-    width: 160px;
+    width: 250px;
 
     ul {
       overflow: hidden;

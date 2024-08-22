@@ -1,19 +1,26 @@
 import React from 'react';
 
-export const Sort = () => {
+export const Sort = ({ sortValue, onClickSortValue }) => {
     const [visiblePopap, setVisiblePopap] = React.useState(false);
-    const [sortName, setSortName] = React.useState('популярности');
 
-    const sortNameArray = ['популярности', 'цене', 'алфавиту'];
-
-    const onClickSortValue = (name) => {
-        setSortName(name);
+    const onClickSort = (obj) => {
+        onClickSortValue(obj);
         setVisiblePopap(false);
     };
 
+    const sortNameArray = [
+        { name: 'популярности', sort: '-rating' },
+        { name: 'цене (по возрастанию)', sort: 'price' },
+        { name: 'цене (по убыванию)', sort: '-price' },
+        { name: 'алфавиту', sort: 'title' },
+    ];
+
     return (
         <div className="sort">
-            <div className="sort__label">
+            <div
+                className="sort__label"
+                onClick={() => setVisiblePopap(!visiblePopap)}
+            >
                 <div style={{ whiteSpace: 'nowrap' }}>
                     <svg
                         width="10"
@@ -29,20 +36,20 @@ export const Sort = () => {
                     </svg>
                     <b>Сортировка по:</b>
                 </div>
-                <button onClick={() => setVisiblePopap(!visiblePopap)}>
-                    {sortName}
-                </button>
+                <button>{sortValue.name}</button>
             </div>
             {visiblePopap && (
                 <div className="sort__popup">
                     <ul>
-                        {sortNameArray.map((name, index) => (
+                        {sortNameArray.map((obj, index) => (
                             <li
                                 key={index}
-                                className={name === sortName ? 'active' : ''}
-                                onClick={() => onClickSortValue(name)}
+                                className={
+                                    obj.sort === sortValue.sort ? 'active' : ''
+                                }
+                                onClick={() => onClickSort(obj)}
                             >
-                                {name}
+                                {obj.name}
                             </li>
                         ))}
                     </ul>

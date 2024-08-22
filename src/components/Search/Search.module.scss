@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  img {
+    position: absolute;
+    margin-left: 6px;
+    width: 18px;
+  }
+
+  input {
+    padding-left: 2rem;
+    padding-right: 10px;
+    width: 16rem;
+    height: 2.5rem;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    border: 1px solid #cfcfcf;
+    transition: 0.2s;
+
+    &:focus {
+      border: 1px solid #949494;
+    }
+  }
+}
