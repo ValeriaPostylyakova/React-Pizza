@@ -15,13 +15,7 @@ export const Header = ({ searchValue, setSearchValue }) => {
                         </div>
                     </div>
                 </Link>
-                <div
-                    style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '3rem',
-                    }}
-                >
+                <div className="header__container_2">
                     <Search
                         searchValue={searchValue}
                         setSearchValue={setSearchValue}

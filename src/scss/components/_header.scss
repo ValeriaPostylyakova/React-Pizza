@@ -35,4 +35,15 @@
         }
     }
   }
+
+  .header__container_2 {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+
+    @media screen and (max-width: 800px) {
+      flex-direction: column-reverse;
+      gap: 1.5rem;
+    }
+  }
 }
