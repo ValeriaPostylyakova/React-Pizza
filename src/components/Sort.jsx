@@ -1,10 +1,16 @@
 import React from 'react';
 
-export const Sort = ({ sortValue, onClickSortValue }) => {
+import { useSelector, useDispatch } from 'react-redux';
+import { setSortValue } from '../redux/slices/filterSlice.js';
+
+export const Sort = () => {
     const [visiblePopap, setVisiblePopap] = React.useState(false);
 
+    const dispatch = useDispatch();
+    const sortValue = useSelector((state) => state.filter.sortValue)
+
     const onClickSort = (obj) => {
-        onClickSortValue(obj);
+        dispatch(setSortValue(obj))
         setVisiblePopap(false);
     };
 

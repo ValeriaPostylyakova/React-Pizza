@@ -1,21 +1,22 @@
 import React from 'react';
 import axios from 'axios';
 
+import { useSelector, useDispatch } from 'react-redux';
+import { setCategoryId } from '../redux/slices/filterSlice.js';
+
 import { Categories } from '../components/Categories.jsx';
 import { Sort } from '../components/Sort.jsx';
 import { PizzaBlockSkeleton } from '../components/PizzaBlockSkeleton.jsx';
 import { PizzaBlock } from '../components/PizzaBlock.jsx';
 import { Pagination } from '../components/Pagination/Pagination.jsx';
 
+
 const Home = ({ searchValue }) => {
     const [pizzaData, setPizzaData] = React.useState([]);
     const [isLoading, setIsLoading] = React.useState(true);
 
-    const [categoryId, setCategoryId] = React.useState(0);
-    const [sortValue, setSortValue] = React.useState({
-        name: 'популярности',
-        sort: '-rating',
-    });
+    const dispatch = useDispatch();
+    const { categoryId, sortValue } = useSelector((state) => state.filter);
 
     const [paginationPage, setPaginationPage] = React.useState(1);
 
@@ -53,18 +54,20 @@ const Home = ({ searchValue }) => {
         }
 
         axiosData();
-    }, [categoryId, sortValue, paginationPage]);
+    }, [categoryId, sortValue.sort, paginationPage]);
+
+    const onClickCategory = (index) => {
+        dispatch(setCategoryId(index));
+    }
 
     return (
         <>
             <div className="content__top">
                 <Categories
                     categoryId={categoryId}
-                    onClickCategory={(index) => setCategoryId(index)}
+                    onClickCategory={onClickCategory}
                 />
                 <Sort
-                    sortValue={sortValue}
-                    onClickSortValue={(obj) => setSortValue(obj)}
                 />
             </div>
             <h2 className="content__title">Все пиццы</h2>
