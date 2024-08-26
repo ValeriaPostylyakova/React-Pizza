@@ -2,7 +2,10 @@ import React from 'react';
 import axios from 'axios';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { setCategoryId } from '../redux/slices/filterSlice.js';
+import {
+    setCategoryId,
+    setPaginationPage,
+} from '../redux/slices/filterSlice.js';
 
 import { Categories } from '../components/Categories.jsx';
 import { Sort } from '../components/Sort.jsx';
@@ -10,15 +13,22 @@ import { PizzaBlockSkeleton } from '../components/PizzaBlockSkeleton.jsx';
 import { PizzaBlock } from '../components/PizzaBlock.jsx';
 import { Pagination } from '../components/Pagination/Pagination.jsx';
 
-
 const Home = ({ searchValue }) => {
     const [pizzaData, setPizzaData] = React.useState([]);
     const [isLoading, setIsLoading] = React.useState(true);
 
     const dispatch = useDispatch();
-    const { categoryId, sortValue } = useSelector((state) => state.filter);
+    const { categoryId, sortValue, paginationPage } = useSelector(
+        (state) => state.filter
+    );
 
-    const [paginationPage, setPaginationPage] = React.useState(1);
+    const onClickCategory = (index) => {
+        dispatch(setCategoryId(index));
+    };
+
+    const onChangePagination = (index) => {
+        dispatch(setPaginationPage(index));
+    };
 
     const skeleton = [...new Array(4)].map((skeletonItem, index) => (
         <PizzaBlockSkeleton key={index} />
@@ -56,10 +66,6 @@ const Home = ({ searchValue }) => {
         axiosData();
     }, [categoryId, sortValue.sort, paginationPage]);
 
-    const onClickCategory = (index) => {
-        dispatch(setCategoryId(index));
-    }
-
     return (
         <>
             <div className="content__top">
@@ -67,14 +73,13 @@ const Home = ({ searchValue }) => {
                     categoryId={categoryId}
                     onClickCategory={onClickCategory}
                 />
-                <Sort
-                />
+                <Sort />
             </div>
             <h2 className="content__title">Все пиццы</h2>
             <div className="content__items">
                 {isLoading ? skeleton : pizzasData}
             </div>
-            <Pagination onChange={(index) => setPaginationPage(index)} />
+            <Pagination onChange={onChangePagination} />
         </>
     );
 };

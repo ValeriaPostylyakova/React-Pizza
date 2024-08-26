@@ -1,64 +1,64 @@
 @import '../variables';
 
 .sort {
-  position: relative;
-  &__label {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    cursor: pointer;
-
-    @media screen and (max-width: 1307px) {
-      margin-top: 0.5rem;
-    }
-
-    svg {
-      margin-right: 8px;
-    }
-
-    b {
-      margin-right: 8px;
-    }
-
-    button {
-      border: none;
-      background-color: #fff;
-      font-size: 1rem;
-      outline: none;
-      color: $orange;
-      border-bottom: 1px dashed $orange;
-      cursor: pointer;
-      margin-top: 0;
-    }
-  }
-
-  &__popup {
-    position: absolute;
-    right: 0;
-    margin-top: 15px;
-    background: #ffffff;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
-    border-radius: 10px;
-    overflow: hidden;
-    padding: 10px 0;
-    width: 250px;
-
-    ul {
-      overflow: hidden;
-      li {
-        padding: 12px 20px;
+    position: relative;
+    &__label {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
         cursor: pointer;
 
-        &.active,
-        &:hover {
-          background: rgba(254, 95, 30, 0.05);
+        @media screen and (max-width: 1307px) {
+            margin-top: 0.5rem;
         }
 
-        &.active {
-          font-weight: bold;
-          color: $orange;
+        svg {
+            margin-right: 8px;
         }
-      }
+
+        b {
+            margin-right: 8px;
+        }
+
+        button {
+            border: none;
+            background-color: #fff;
+            font-size: 1rem;
+            outline: none;
+            color: $orange;
+            border-bottom: 1px dashed $orange;
+            cursor: pointer;
+            margin-top: 0;
+        }
     }
-  }
+
+    &__popup {
+        position: absolute;
+        right: 0;
+        margin-top: 15px;
+        background: #ffffff;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
+        border-radius: 10px;
+        overflow: hidden;
+        padding: 10px 0;
+        width: 250px;
+
+        ul {
+            overflow: hidden;
+            li {
+                padding: 12px 20px;
+                cursor: pointer;
+
+                &.active,
+                &:hover {
+                    background: rgba(254, 95, 30, 0.05);
+                }
+
+                &.active {
+                    font-weight: bold;
+                    color: $orange;
+                }
+            }
+        }
+    }
 }

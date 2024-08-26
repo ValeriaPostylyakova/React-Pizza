@@ -1,29 +1,29 @@
 .container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
 
-  li {
-      a {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: clamp(35px, 7vw, 50px);
-        height: clamp(35px, 7vw, 50px);
-        border: 1px solid #e7900f;
-        border-radius: 100%;
-        cursor: pointer;
-        transition: 0.2s;
+    li {
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: clamp(35px, 7vw, 50px);
+            height: clamp(35px, 7vw, 50px);
+            border: 1px solid #e7900f;
+            border-radius: 100%;
+            cursor: pointer;
+            transition: 0.2s;
+        }
     }
-  }
 }
 
 :global {
-  .selected {
-    a {
-      background-color: #c98310;
-      color: #fff;
+    .selected {
+        a {
+            background-color: #c98310;
+            color: #fff;
+        }
     }
-  }
 }

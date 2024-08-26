@@ -7,10 +7,10 @@ export const Sort = () => {
     const [visiblePopap, setVisiblePopap] = React.useState(false);
 
     const dispatch = useDispatch();
-    const sortValue = useSelector((state) => state.filter.sortValue)
+    const sortValue = useSelector((state) => state.filter.sortValue);
 
     const onClickSort = (obj) => {
-        dispatch(setSortValue(obj))
+        dispatch(setSortValue(obj));
         setVisiblePopap(false);
     };
 

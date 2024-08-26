@@ -5,8 +5,9 @@ const initialState = {
     sortValue: {
         name: 'популярности',
         sort: '-rating',
-    }
-}
+    },
+    paginationPage: 1,
+};
 
 const filterSlice = createSlice({
     name: 'filter',
@@ -18,9 +19,13 @@ const filterSlice = createSlice({
         setSortValue(state, action) {
             state.sortValue = action.payload;
         },
+        setPaginationPage(state, action) {
+            state.paginationPage = action.payload;
+        },
     },
 });
 
-export const { setCategoryId, setSortValue } = filterSlice.actions;
+export const { setCategoryId, setSortValue, setPaginationPage } =
+    filterSlice.actions;
 
 export default filterSlice.reducer;
