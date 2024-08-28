@@ -20,6 +20,7 @@ import { sortNameArray } from '../components/Sort.jsx';
 
 const Home = ({ searchValue }) => {
     const [pizzaData, setPizzaData] = React.useState([]);
+
     const [isLoading, setIsLoading] = React.useState(true);
 
     const dispatch = useDispatch();

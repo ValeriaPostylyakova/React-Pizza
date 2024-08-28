@@ -1,19 +1,27 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { addItems } from '../redux/slices/drawerSlice.js';
 
-export const PizzaBlock = ({
-    id,
-    imageUrl,
-    title,
-    types,
-    sizes,
-    price,
-    category,
-    rating,
-}) => {
+export const PizzaBlock = ({ id, imageUrl, title, types, sizes, price }) => {
     const [typeActive, setTypeActive] = React.useState(0);
     const [sizeActive, setSizeActive] = React.useState(0);
 
+    const dispatch = useDispatch();
+
     const typeNames = ['тонкое', 'традиционное'];
+
+    const onClickButtonItem = () => {
+        const obj = {
+            id,
+            imageUrl,
+            title,
+            types: typeNames[typeActive],
+            sizes: sizes[sizeActive],
+            price,
+        };
+
+        dispatch(addItems(obj));
+    };
 
     return (
         <div className="pizza-block">
@@ -45,7 +53,10 @@ export const PizzaBlock = ({
             </div>
             <div className="pizza-block__bottom">
                 <div className="pizza-block__price">от {price} ₽</div>
-                <button className="button button--outline button--add">
+                <button
+                    onClick={onClickButtonItem}
+                    className="button button--outline button--add"
+                >
                     <svg
                         width="12"
                         height="12"

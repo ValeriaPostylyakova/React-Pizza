@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import { DrawerItem } from './DrawerItem.jsx';
 
@@ -7,6 +8,8 @@ import cartClear from '../assets/img/trash.svg';
 import arrow from '../assets/img/grey-arrow-left.svg';
 
 const DrawerItems = () => {
+    const { items } = useSelector((state) => state.drawer);
+
     return (
         <div className="content">
             <div className="container container--cart">
@@ -22,9 +25,9 @@ const DrawerItems = () => {
                         </div>
                     </div>
                     <div className="content__items">
-                        <DrawerItem />
-                        <DrawerItem />
-                        <DrawerItem />
+                        {items.map((item) => (
+                            <DrawerItem key={item.id} {...item} />
+                        ))}
                     </div>
                     <div className="cart__bottom">
                         <div className="cart__bottom-details">
