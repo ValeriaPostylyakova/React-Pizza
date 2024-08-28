@@ -3,6 +3,13 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setSortValue } from '../redux/slices/filterSlice.js';
 
+export const sortNameArray = [
+    { name: 'популярности', sort: '-rating' },
+    { name: 'цене (по возрастанию)', sort: 'price' },
+    { name: 'цене (по убыванию)', sort: '-price' },
+    { name: 'алфавиту', sort: 'title' },
+];
+
 export const Sort = () => {
     const [visiblePopap, setVisiblePopap] = React.useState(false);
 
@@ -13,13 +20,6 @@ export const Sort = () => {
         dispatch(setSortValue(obj));
         setVisiblePopap(false);
     };
-
-    const sortNameArray = [
-        { name: 'популярности', sort: '-rating' },
-        { name: 'цене (по возрастанию)', sort: 'price' },
-        { name: 'цене (по убыванию)', sort: '-price' },
-        { name: 'алфавиту', sort: 'title' },
-    ];
 
     return (
         <div className="sort">

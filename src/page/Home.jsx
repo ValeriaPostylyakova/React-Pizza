@@ -1,23 +1,33 @@
 import React from 'react';
 import axios from 'axios';
+import qs from 'qs';
 
 import { useSelector, useDispatch } from 'react-redux';
 import {
     setCategoryId,
     setPaginationPage,
+    setFilterHome,
 } from '../redux/slices/filterSlice.js';
+
+import { useNavigate } from 'react-router-dom';
 
 import { Categories } from '../components/Categories.jsx';
 import { Sort } from '../components/Sort.jsx';
 import { PizzaBlockSkeleton } from '../components/PizzaBlockSkeleton.jsx';
 import { PizzaBlock } from '../components/PizzaBlock.jsx';
 import { Pagination } from '../components/Pagination/Pagination.jsx';
+import { sortNameArray } from '../components/Sort.jsx';
 
 const Home = ({ searchValue }) => {
     const [pizzaData, setPizzaData] = React.useState([]);
     const [isLoading, setIsLoading] = React.useState(true);
 
     const dispatch = useDispatch();
+
+    const navigate = useNavigate();
+    const isParams = React.useRef(false);
+    const getParams = React.useRef(false);
+
     const { categoryId, sortValue, paginationPage } = useSelector(
         (state) => state.filter
     );
@@ -29,6 +39,21 @@ const Home = ({ searchValue }) => {
     const onChangePagination = (index) => {
         dispatch(setPaginationPage(index));
     };
+
+    async function axiosData() {
+        try {
+            setIsLoading(true);
+            const { data } = await axios.get(
+                `https://7ca40464e2c51584.mokky.dev/pizza?page=${paginationPage}&limit=4&${categoryFilter}&sortBy=${sortValue.sort}${search}`
+            );
+            setPizzaData(data.items);
+        } catch (err) {
+            alert('Ошибка при получении данных');
+            console.error(err);
+        }
+
+        setIsLoading(false);
+    }
 
     const skeleton = [...new Array(4)].map((skeletonItem, index) => (
         <PizzaBlockSkeleton key={index} />
@@ -48,22 +73,40 @@ const Home = ({ searchValue }) => {
     const search = searchValue ? `&search=${searchValue}` : '';
 
     React.useEffect(() => {
-        async function axiosData() {
-            try {
-                setIsLoading(true);
-                const { data } = await axios.get(
-                    `https://7ca40464e2c51584.mokky.dev/pizza?page=${paginationPage}&limit=4&${categoryFilter}&sortBy=${sortValue.sort}${search}`
-                );
-                setPizzaData(data.items);
-            } catch (err) {
-                alert('Ошибка при получении данных');
-                console.error(err);
-            }
+        if (window.location.search) {
+            const params = qs.parse(window.location.search.substring(1));
+            const sortValue = sortNameArray.find(
+                (obj) => obj.sort === params.sort
+            );
+            dispatch(
+                setFilterHome({
+                    ...params,
+                    sortValue,
+                })
+            );
 
-            setIsLoading(false);
+            isParams.current = true;
+        }
+    }, []);
+    React.useEffect(() => {
+        if (!isParams.current) {
+            axiosData();
         }
 
-        axiosData();
+        isParams.current = false;
+    }, [categoryId, sortValue.sort, paginationPage]);
+
+    React.useEffect(() => {
+        if (getParams.current) {
+            const queryString = qs.stringify({
+                categoryId,
+                sort: sortValue.sort,
+                paginationPage,
+            });
+
+            navigate(`?${queryString}`);
+        }
+        getParams.current = true;
     }, [categoryId, sortValue.sort, paginationPage]);
 
     return (

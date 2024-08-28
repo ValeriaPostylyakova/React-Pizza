@@ -22,10 +22,16 @@ const filterSlice = createSlice({
         setPaginationPage(state, action) {
             state.paginationPage = action.payload;
         },
+
+        setFilterHome(state, action) {
+            state.categoryId = Number(action.payload.categoryId);
+            state.paginationPage = Number(action.payload.paginationPage);
+            state.sortValue = action.payload.sortValue;
+        },
     },
 });
 
-export const { setCategoryId, setSortValue, setPaginationPage } =
+export const { setCategoryId, setSortValue, setPaginationPage, setFilterHome } =
     filterSlice.actions;
 
 export default filterSlice.reducer;
