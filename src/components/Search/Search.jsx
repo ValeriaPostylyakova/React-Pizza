@@ -2,7 +2,7 @@ import React from 'react';
 import debounce from 'lodash.debounce';
 
 import search from '../../assets/img/search.png';
-import close from '../../assets/close.png';
+import close from '../../assets/img/close.png';
 
 import style from './Search.module.scss';
 

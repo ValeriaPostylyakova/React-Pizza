@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addItems } from '../redux/slices/drawerSlice.js';
 
 export const PizzaBlock = ({ id, imageUrl, title, types, sizes, price }) => {
@@ -7,6 +7,11 @@ export const PizzaBlock = ({ id, imageUrl, title, types, sizes, price }) => {
     const [sizeActive, setSizeActive] = React.useState(0);
 
     const dispatch = useDispatch();
+    const drawerItem = useSelector((state) =>
+        state.drawer.items.find((obj) => obj.id === id)
+    );
+
+    const count = drawerItem ? drawerItem.count : 0;
 
     const typeNames = ['тонкое', 'традиционное'];
 
@@ -70,7 +75,7 @@ export const PizzaBlock = ({ id, imageUrl, title, types, sizes, price }) => {
                         />
                     </svg>
                     <span>Добавить</span>
-                    <i>0</i>
+                    <i>{count}</i>
                 </button>
             </div>
         </div>

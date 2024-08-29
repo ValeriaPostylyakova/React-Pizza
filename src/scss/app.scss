@@ -97,6 +97,8 @@ body {
         display: flex;
         align-items: center;
         cursor: pointer;
+        border: none;
+        background-color: #fff;
         @include noselect();
 
         span {
@@ -232,6 +234,7 @@ body {
 
         &-details {
             display: flex;
+            //align-items: center;
             justify-content: space-between;
 
             span {
