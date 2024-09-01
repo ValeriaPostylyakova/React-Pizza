@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import qs from 'qs';
 
 import { useSelector, useDispatch } from 'react-redux';
@@ -8,6 +7,8 @@ import {
     setPaginationPage,
     setFilterHome,
 } from '../redux/slices/filterSlice.js';
+
+import { fetchPizzas } from '../redux/slices/pizzasSlice.js';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -19,10 +20,6 @@ import { Pagination } from '../components/Pagination/Pagination.jsx';
 import { sortNameArray } from '../components/Sort.jsx';
 
 const Home = ({ searchValue }) => {
-    const [pizzaData, setPizzaData] = React.useState([]);
-
-    const [isLoading, setIsLoading] = React.useState(true);
-
     const dispatch = useDispatch();
 
     const navigate = useNavigate();
@@ -33,6 +30,8 @@ const Home = ({ searchValue }) => {
         (state) => state.filter
     );
 
+    const { pizzasItems, status } = useSelector((state) => state.pizzas);
+
     const onClickCategory = (index) => {
         dispatch(setCategoryId(index));
     };
@@ -41,37 +40,32 @@ const Home = ({ searchValue }) => {
         dispatch(setPaginationPage(index));
     };
 
-    async function axiosData() {
-        try {
-            setIsLoading(true);
-            const { data } = await axios.get(
-                `https://7ca40464e2c51584.mokky.dev/pizza?page=${paginationPage}&limit=4&${categoryFilter}&sortBy=${sortValue.sort}${search}`
-            );
-            setPizzaData(data.items);
-        } catch (err) {
-            alert('Ошибка при получении данных');
-            console.error(err);
-        }
+    const filterPizzasData = pizzasItems.filter((dataPizza) => {
+        const pizzaName = dataPizza.title.toLowerCase();
+        return pizzaName.includes(searchValue.toLowerCase());
+    });
 
-        setIsLoading(false);
+    async function axiosData() {
+        const categoryFilter = `${categoryId > 0 ? `category=${categoryId}` : ''}`;
+        const search = searchValue ? `&search=${searchValue}` : '';
+
+        dispatch(
+            fetchPizzas({
+                paginationPage,
+                categoryFilter,
+                sortValue,
+                search,
+            })
+        );
     }
 
-    const skeleton = [...new Array(4)].map((skeletonItem, index) => (
+    const skeleton = [...new Array(4)].map((_, index) => (
         <PizzaBlockSkeleton key={index} />
     ));
 
-    const pizzasData = pizzaData
-        .filter((dataPizza) => {
-            const pizzaName = dataPizza.title.toLowerCase();
-            return pizzaName.includes(searchValue.toLowerCase());
-        })
-        .map((dataPropsPizza) => (
-            <PizzaBlock {...dataPropsPizza} key={dataPropsPizza.id} />
-        ));
-
-    const categoryFilter = `${categoryId > 0 ? `category=${categoryId}` : ''}`;
-
-    const search = searchValue ? `&search=${searchValue}` : '';
+    const pizzasData = filterPizzasData.map((dataPropsPizza) => (
+        <PizzaBlock {...dataPropsPizza} key={dataPropsPizza.id} />
+    ));
 
     React.useEffect(() => {
         if (window.location.search) {
@@ -120,9 +114,22 @@ const Home = ({ searchValue }) => {
                 <Sort />
             </div>
             <h2 className="content__title">Все пиццы</h2>
-            <div className="content__items">
-                {isLoading ? skeleton : pizzasData}
-            </div>
+            {status === 'error' ? (
+                <div className="content__error-info">
+                    <h2>
+                        Произошла ошибка <span>😕</span>
+                    </h2>
+                    <p>
+                        К сожалению, не удалось получить пиццы. Попробуйте
+                        повторить попытку позже.
+                    </p>
+                </div>
+            ) : (
+                <div className="content__items">
+                    {status === 'loading' ? skeleton : pizzasData}
+                </div>
+            )}
+
             <Pagination onChange={onChangePagination} />
         </>
     );

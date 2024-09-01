@@ -53,6 +53,9 @@ const drawerSlice = createSlice({
         },
     },
 });
+
+export const drawerSelect = (state) => state.drawer;
+
 export const { addItems, clearDrawer, removeItem, decrementCount } =
     drawerSlice.actions;
 

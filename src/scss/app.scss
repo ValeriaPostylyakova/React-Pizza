@@ -53,6 +53,22 @@ body {
             justify-content: center;
         }
     }
+    &__error-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 8rem 0;
+        text-align: center;
+
+        h2 {
+            font-size: clamp(20px, 5vw, 25px);
+            margin-bottom: 0.5rem;
+        }
+        p {
+            font-size: clamp(15px, 2vw, 20px);
+        }
+    }
 }
 
 .container {

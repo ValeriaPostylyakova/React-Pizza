@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 
 import drawer from '../assets/img/empty-cart.png';
-import React from 'react';
 
 const DrawerEmpty = () => {
     return (

@@ -2269,6 +2269,11 @@ queue-microtask@^1.2.2:
   resolved "https://registry.npmjs.org/queue-microtask/-/queue-microtask-1.2.3.tgz"
   integrity sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==
 
+react-confirm@^0.3.0-7:
+  version "0.3.0-7"
+  resolved "https://registry.yarnpkg.com/react-confirm/-/react-confirm-0.3.0-7.tgz#d156a197240b7758a31f0d2dc074c1949cf9f1a7"
+  integrity sha512-DxEoq9uKG2Ku4qs1HHcbygbIJervr73L3uULihwQsl7dr2Ca2ltBRoM0vh7G1FPV5YJAJSPmaIbEiGpmTubBKg==
+
 react-content-loader@^7.0.2:
   version "7.0.2"
   resolved "https://registry.npmjs.org/react-content-loader/-/react-content-loader-7.0.2.tgz"

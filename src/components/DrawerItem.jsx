@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 import {
     removeItem,
     addItems,
@@ -21,7 +19,6 @@ export const DrawerItem = ({
     count,
 }) => {
     const dispatch = useDispatch();
-
     const totalPrice = price * count;
 
     const onClickPlus = () => {
@@ -30,8 +27,8 @@ export const DrawerItem = ({
 
     const onClickMinus = () => {
         dispatch(decrementCount({ id }));
-
-        if (count === 1) {
+        if (count <= 1) {
+            window.confirm('Вы действительно хотите удалить этот товар?');
             dispatch(removeItem({ id }));
         }
     };
@@ -64,14 +61,14 @@ export const DrawerItem = ({
             <div className="cart__item-count">
                 <button
                     onClick={onClickPlus}
-                    className="button button--outline button--circle cart__item-count-minus"
+                    className="button button--outline button--circle cart__item-count-plus"
                 >
                     <img src={plus} alt="plus" />
                 </button>
                 <b>{count}</b>
                 <button
                     onClick={onClickMinus}
-                    className="button button--outline button--circle cart__item-count-plus"
+                    className="button button--outline button--circle cart__item-count-minus"
                 >
                     <img width={15} src={minus} alt="minus" />
                 </button>

@@ -1,8 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addItems } from '../redux/slices/drawerSlice.js';
-import axios from 'axios';
-
 export const PizzaBlock = ({ id, imageUrl, title, types, sizes, price }) => {
     const [typeActive, setTypeActive] = React.useState(0);
     const [sizeActive, setSizeActive] = React.useState(0);
@@ -13,19 +11,6 @@ export const PizzaBlock = ({ id, imageUrl, title, types, sizes, price }) => {
     );
 
     const count = drawerItem ? drawerItem.count : 0;
-
-    React.useEffect(() => {
-        async function dataDrawer() {
-            const { data } = await axios.get(
-                'https://7ca40464e2c51584.mokky.dev/drawer'
-            );
-
-            dispatch(addItems(data));
-            console.log(data);
-        }
-
-        dataDrawer();
-    }, []);
 
     const typeNames = ['тонкое', 'традиционное'];
 
@@ -40,7 +25,6 @@ export const PizzaBlock = ({ id, imageUrl, title, types, sizes, price }) => {
             price,
         };
 
-        axios.post('https://7ca40464e2c51584.mokky.dev/drawer', obj);
         dispatch(addItems(obj));
     };
 

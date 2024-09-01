@@ -1,10 +1,13 @@
 import { Link } from 'react-router-dom';
+
+import { useSelector } from 'react-redux';
+import { drawerSelect } from '../redux/slices/drawerSlice.js';
+
 import logo from '../assets/img/pizza-logo.svg';
 import { Search } from './Search/Search.jsx';
-import { useSelector } from 'react-redux';
 
 export const Header = ({ searchValue, setSearchValue }) => {
-    const { totalPrice, items } = useSelector((state) => state.drawer);
+    const { totalPrice, items } = useSelector(drawerSelect);
 
     const totalCount = items.reduce((summ, obj) => obj.count + summ, 0);
 
