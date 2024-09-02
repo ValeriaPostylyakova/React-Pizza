@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import App from './App.jsx';
 import NotFound from './page/NotFound.jsx';
 import Drawer from './page/Drawer.jsx';
+import PizzaFullBlock from './page/PizzaFullBlock/PizzaFullBlock.jsx';
 
 import './index.scss';
 
@@ -18,6 +19,11 @@ const router = createBrowserRouter([
     {
         path: 'drawer',
         element: <Drawer />,
+        errorElement: <NotFound />,
+    },
+    {
+        path: 'pizza/:id',
+        element: <PizzaFullBlock />,
         errorElement: <NotFound />,
     },
 ]);

@@ -1,6 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import { useDispatch, useSelector } from 'react-redux';
 import { addItems } from '../redux/slices/drawerSlice.js';
+
+export const typeNames = ['тонкое', 'традиционное'];
+
 export const PizzaBlock = ({ id, imageUrl, title, types, sizes, price }) => {
     const [typeActive, setTypeActive] = React.useState(0);
     const [sizeActive, setSizeActive] = React.useState(0);
@@ -11,8 +16,6 @@ export const PizzaBlock = ({ id, imageUrl, title, types, sizes, price }) => {
     );
 
     const count = drawerItem ? drawerItem.count : 0;
-
-    const typeNames = ['тонкое', 'традиционное'];
 
     const onClickButtonItem = () => {
         const obj = {
@@ -56,6 +59,9 @@ export const PizzaBlock = ({ id, imageUrl, title, types, sizes, price }) => {
                     ))}
                 </ul>
             </div>
+            <Link to={`pizza/${id}`}>
+                <button className="pizza-block__info">Подробнее</button>
+            </Link>
             <div className="pizza-block__bottom">
                 <div className="pizza-block__price">от {price} ₽</div>
                 <button

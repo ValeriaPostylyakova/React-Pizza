@@ -1,0 +1,97 @@
+.pizza__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10rem;
+  min-height: 60vh;
+}
+
+.pizza__right {
+  button {
+    background-color: #fff;
+    border: 1px solid rgba(123, 123, 123, 0.63);
+    border-radius: 4px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    color: rgba(123, 123, 123, 0.63);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      background-color: rgba(182, 182, 182, 0.17);
+    }
+  }
+}
+
+.pizza__title {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.pizza__description {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+
+  .price {
+    padding: 2px 25px;
+    border-radius: 2rem;
+    color: #ff0000;
+    background-color: rgba(255, 222, 222, 0.76);
+  }
+
+  p {
+    font-weight: 800;
+    font-size: 1.2rem;
+
+    span {
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+  }
+
+  .category {
+    padding: 2px 25px;
+    border-radius: 2rem;
+    border: 2px solid #808000;
+    color: #808000;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: 800;
+  }
+}
+
+.pizza__text {
+  font-size: 1.1rem;
+  margin-bottom: 2.5rem;
+  max-width: 500px;
+}
+
+.pizza__container_button {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  div {
+    background-color: #fff;
+    border: 1px solid rgb(56, 116, 195);
+    border-radius: 4px;
+    padding: 7px 17px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: rgb(56, 116, 195);
+    margin-bottom: 1rem;
+  }
+}
+
+.pizza__size {
+  margin-bottom: 1rem;
+  font-weight: 800;
+  font-size: 1rem;
+}

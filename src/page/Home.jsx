@@ -30,7 +30,7 @@ const Home = ({ searchValue }) => {
         (state) => state.filter
     );
 
-    const { pizzasItems, status } = useSelector((state) => state.pizzas);
+    const { status, pizzasItems } = useSelector((state) => state.pizzas);
 
     const onClickCategory = (index) => {
         dispatch(setCategoryId(index));
