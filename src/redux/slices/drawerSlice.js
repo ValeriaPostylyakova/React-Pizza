@@ -46,6 +46,9 @@ const drawerSlice = createSlice({
             state.items = state.items.filter(
                 (obj) => obj.id !== action.payload.id
             );
+            state.totalPrice = state.items.reduce((currentSumm, obj) => {
+                return currentSumm + obj.price * obj.count;
+            }, 0);
         },
         clearDrawer(state) {
             state.items = [];

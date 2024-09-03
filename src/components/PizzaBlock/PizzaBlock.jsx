@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { addItems } from '../redux/slices/drawerSlice.js';
+import { addItems } from '../../redux/slices/drawerSlice.js';
 
 export const typeNames = ['тонкое', 'традиционное'];
 

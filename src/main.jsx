@@ -4,7 +4,7 @@ import { store } from './redux/store.js';
 import { Provider } from 'react-redux';
 
 import App from './App.jsx';
-import NotFound from './page/NotFound.jsx';
+import NotFound from './page/NotFound/NotFound.jsx';
 import Drawer from './page/Drawer.jsx';
 import PizzaFullBlock from './page/PizzaFullBlock/PizzaFullBlock.jsx';
 

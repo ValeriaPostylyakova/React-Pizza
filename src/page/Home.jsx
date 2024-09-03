@@ -14,8 +14,8 @@ import { useNavigate } from 'react-router-dom';
 
 import { Categories } from '../components/Categories.jsx';
 import { Sort } from '../components/Sort.jsx';
-import { PizzaBlockSkeleton } from '../components/PizzaBlockSkeleton.jsx';
-import { PizzaBlock } from '../components/PizzaBlock.jsx';
+import { PizzaBlockSkeleton } from '../components/PizzaBlock/PizzaBlockSkeleton.jsx';
+import { PizzaBlock } from '../components/PizzaBlock/PizzaBlock.jsx';
 import { Pagination } from '../components/Pagination/Pagination.jsx';
 import { sortNameArray } from '../components/Sort.jsx';
 

@@ -6,7 +6,7 @@ export const FullPizzaSkeleton = (props) => (
         speed={2}
         width={1000}
         height={435}
-        viewBox="0 0 2000 435"
+        viewBox="0 0 1000 435"
         backgroundColor="#f3f3f3"
         foregroundColor="#ecebeb"
         {...props}
