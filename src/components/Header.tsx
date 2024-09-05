@@ -4,12 +4,20 @@ import { useSelector } from 'react-redux';
 import { drawerSelect } from '../redux/slices/drawerSlice.js';
 
 import logo from '../assets/img/pizza-logo.svg';
-import { Search } from './Search/Search.jsx';
+import { Search } from './Search/Search.tsx';
+import * as React from 'react';
 
-export const Header = ({ searchValue, setSearchValue }) => {
+type searchProps = {
+    setSearchValue: any;
+};
+
+export const Header: React.FC<searchProps> = ({ setSearchValue }) => {
     const { totalPrice, items } = useSelector(drawerSelect);
 
-    const totalCount = items.reduce((summ, obj) => obj.count + summ, 0);
+    const totalCount = items.reduce(
+        (summ: number, obj: any) => obj.count + summ,
+        0
+    );
 
     return (
         <header className="header">
@@ -24,10 +32,7 @@ export const Header = ({ searchValue, setSearchValue }) => {
                     </div>
                 </Link>
                 <div className="header__container_2">
-                    <Search
-                        searchValue={searchValue}
-                        setSearchValue={setSearchValue}
-                    />
+                    <Search setSearchValue={setSearchValue} />
                     <div className="header__cart">
                         <Link to="drawer" className="button button--cart">
                             <span>{totalPrice} ₽</span>

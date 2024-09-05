@@ -1,6 +1,11 @@
-import React from 'react';
+import * as React from 'react';
 
-export const categories = [
+type CategoriesProps = {
+    categoryId: number;
+    onClickCategory: any;
+};
+
+export const categories: string[] = [
     'Все',
     'Мясные',
     'Вегетарианские',
@@ -9,11 +14,14 @@ export const categories = [
     'Закрытые',
 ];
 
-export const Categories = ({ categoryId, onClickCategory }) => {
+export const Categories: React.FC<CategoriesProps> = ({
+    categoryId,
+    onClickCategory,
+}) => {
     return (
         <div className="categories">
             <ul>
-                {categories.map((category, index) => (
+                {categories.map((category: string, index: number) => (
                     <li
                         key={index}
                         onClick={() => onClickCategory(index)}

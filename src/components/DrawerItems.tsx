@@ -1,19 +1,20 @@
-import React from 'react';
+import * as React from 'react';
+
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { clearDrawer } from '../redux/slices/drawerSlice.js';
 
-import { DrawerItem } from './DrawerItem.jsx';
+import { DrawerItem } from './DrawerItem.tsx';
 
 import drawer from '../assets/img/cart.png';
 import cartClear from '../assets/img/trash.svg';
 import arrow from '../assets/img/grey-arrow-left.svg';
 
-const DrawerItems = () => {
+const DrawerItems: React.FC = () => {
     const { items, totalPrice } = useSelector((state) => state.drawer);
     const dispatch = useDispatch();
 
-    const totalCount = items.reduce((summ, obj) => obj.count + summ, 0);
+    const totalCount = items.reduce((summ: number, obj: any) => obj.count + summ, 0);
 
     const onClickClearDrawer = () => {
         if (window.confirm('Вы действительно хотите очистить всю коризну?')) {
@@ -39,7 +40,7 @@ const DrawerItems = () => {
                         </button>
                     </div>
                     <div className="content__items">
-                        {items.map((item) => (
+                        {items.map((item: any) => (
                             <DrawerItem key={item.id} {...item} />
                         ))}
                     </div>

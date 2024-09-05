@@ -5,9 +5,9 @@ import { fetchFullPizzas } from '../../redux/slices/fullPizzaSlice.js';
 
 import { useParams } from 'react-router-dom';
 
-import { FullPizza } from '../../components/FullPizza/FullPizza.jsx';
+import { FullPizza } from '../../components/FullPizza/FullPizza.tsx';
 import style from './PizzaFullBlock.module.scss';
-import { FullPizzaSkeleton } from '../../components/FullPizza/FullPizzaSkeleton.jsx';
+import { FullPizzaSkeleton } from '../../components/FullPizza/FullPizzaSkeleton.tsx';
 
 const PizzaFullBlock = () => {
     const { id } = useParams();

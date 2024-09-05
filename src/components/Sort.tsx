@@ -1,9 +1,14 @@
-import React from 'react';
+import * as React from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { setSortValue } from '../redux/slices/filterSlice.js';
 
-export const sortNameArray = [
+type SortItem = {
+    name: string;
+    sort: string;
+};
+
+export const sortNameArray: SortItem[] = [
     { name: 'популярности', sort: '-rating' },
     { name: 'цене (по возрастанию)', sort: 'price' },
     { name: 'цене (по убыванию)', sort: '-price' },
@@ -16,13 +21,26 @@ export const Sort = () => {
     const dispatch = useDispatch();
     const sortValue = useSelector((state) => state.filter.sortValue);
 
-    const onClickSort = (obj) => {
+    const sortRef = React.useRef<HTMLDivElement | null>(null);
+
+    React.useEffect(() => {
+        const handleClickApp = (event: any) => {
+            if (!event.composedPath().includes(sortRef.current)) {
+                setVisiblePopap(false);
+            }
+        };
+
+        document.body.addEventListener('click', handleClickApp);
+        return () => document.body.removeEventListener('click', handleClickApp);
+    }, []);
+
+    const onClickSort = (obj: SortItem) => {
         dispatch(setSortValue(obj));
         setVisiblePopap(false);
     };
 
     return (
-        <div className="sort">
+        <div ref={sortRef} className="sort">
             <div
                 className="sort__label"
                 onClick={() => setVisiblePopap(!visiblePopap)}

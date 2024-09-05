@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import qs from 'qs';
 
 import { useSelector, useDispatch } from 'react-redux';
@@ -12,14 +12,18 @@ import { fetchPizzas } from '../redux/slices/pizzasSlice.js';
 
 import { useNavigate } from 'react-router-dom';
 
-import { Categories } from '../components/Categories.jsx';
-import { Sort } from '../components/Sort.jsx';
-import { PizzaBlockSkeleton } from '../components/PizzaBlock/PizzaBlockSkeleton.jsx';
-import { PizzaBlock } from '../components/PizzaBlock/PizzaBlock.jsx';
-import { Pagination } from '../components/Pagination/Pagination.jsx';
-import { sortNameArray } from '../components/Sort.jsx';
+import { Categories } from '../components/Categories.tsx';
+import { Sort } from '../components/Sort.tsx';
+import { PizzaBlockSkeleton } from '../components/PizzaBlock/PizzaBlockSkeleton.tsx';
+import { PizzaBlock } from '../components/PizzaBlock/PizzaBlock.tsx';
+import { Pagination } from '../components/Pagination/Pagination.tsx';
+import { sortNameArray } from '../components/Sort.tsx';
 
-const Home = ({ searchValue }) => {
+type SearchValueProps = {
+    searchValue: string;
+}
+
+const Home: React.FC<SearchValueProps> = ({ searchValue }) => {
     const dispatch = useDispatch();
 
     const navigate = useNavigate();
@@ -32,16 +36,17 @@ const Home = ({ searchValue }) => {
 
     const { status, pizzasItems } = useSelector((state) => state.pizzas);
 
-    const onClickCategory = (index) => {
+    const onClickCategory = (index: number) => {
         dispatch(setCategoryId(index));
     };
 
-    const onChangePagination = (index) => {
+    const onChangePagination = (index: number) => {
         dispatch(setPaginationPage(index));
     };
 
-    const filterPizzasData = pizzasItems.filter((dataPizza) => {
+    const filterPizzasData = pizzasItems.filter((dataPizza: any) => {
         const pizzaName = dataPizza.title.toLowerCase();
+
         return pizzaName.includes(searchValue.toLowerCase());
     });
 
@@ -63,7 +68,7 @@ const Home = ({ searchValue }) => {
         <PizzaBlockSkeleton key={index} />
     ));
 
-    const pizzasData = filterPizzasData.map((dataPropsPizza) => (
+    const pizzasData = filterPizzasData.map((dataPropsPizza: any) => (
         <PizzaBlock {...dataPropsPizza} key={dataPropsPizza.id} />
     ));
 

@@ -1,7 +1,7 @@
-import React from 'react';
+import * as React from 'react';
 import ContentLoader from 'react-content-loader';
 
-export const FullPizzaSkeleton = (props) => (
+export const FullPizzaSkeleton: React.FC = (props) => (
     <ContentLoader
         speed={2}
         width={1000}

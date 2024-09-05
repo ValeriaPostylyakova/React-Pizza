@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { Header } from './components/Header.jsx';
-import Home from './page/Home.jsx';
+import { Header } from './components/Header.tsx';
+import Home from './page/Home.tsx';
 
 import './scss/app.scss';
 
-const App = () => {
-    const [searchValue, setSearchValue] = React.useState('');
+const App: React.FC = () => {
+    const [searchValue, setSearchValue] = React.useState<string>('');
 
     return (
         <div className="wrapper">

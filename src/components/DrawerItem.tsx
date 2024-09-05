@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 import {
     removeItem,
     addItems,
@@ -9,7 +11,17 @@ import plus from '../assets/img/plus.svg';
 import clear from '../assets/img/close.png';
 import minus from '../assets/img/minus.svg';
 
-export const DrawerItem = ({
+type CartItemProps = {
+    id: number;
+    imageUrl: string;
+    title: string;
+    types: string;
+    sizes: number;
+    price: number;
+    count: number;
+};
+
+export const DrawerItem: React.FC<CartItemProps> = ({
     id,
     imageUrl,
     title,

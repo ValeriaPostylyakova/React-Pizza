@@ -1,16 +1,16 @@
 import { useSelector } from 'react-redux';
 import { drawerSelect } from '../redux/slices/drawerSlice.js';
 
-import { Header } from '../components/Header.jsx';
-import DrawerItems from '../components/DrawerItems.jsx';
-import DrawerEmpty from '../components/DrawerEmpty.jsx';
+import { Header } from '../components/Header.tsx';
+import DrawerItems from '../components/DrawerItems.tsx';
+import DrawerEmpty from '../components/DrawerEmpty.tsx';
 
 const Drawer = () => {
     const { items } = useSelector(drawerSelect);
 
     return (
         <div className="wrapper">
-            <Header />
+            <Header setSearchValue={null} />
             {items.length > 0 ? <DrawerItems /> : <DrawerEmpty />}
         </div>
     );

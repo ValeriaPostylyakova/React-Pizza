@@ -1,8 +1,9 @@
+import * as React from 'react';
 import { Link } from 'react-router-dom';
 
 import drawer from '../assets/img/empty-cart.png';
 
-const DrawerEmpty = () => {
+const DrawerEmpty: React.FC = () => {
     return (
         <div className="wrapper">
             <div className="content">

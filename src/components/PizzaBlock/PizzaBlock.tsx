@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { Link } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,9 +6,25 @@ import { addItems } from '../../redux/slices/drawerSlice.js';
 
 export const typeNames = ['тонкое', 'традиционное'];
 
-export const PizzaBlock = ({ id, imageUrl, title, types, sizes, price }) => {
-    const [typeActive, setTypeActive] = React.useState(0);
-    const [sizeActive, setSizeActive] = React.useState(0);
+type PizzaBlockProps = {
+    id: number;
+    imageUrl: string;
+    title: string;
+    types: number[];
+    sizes: string[];
+    price: number;
+};
+
+export const PizzaBlock: React.FC<PizzaBlockProps> = ({
+    id,
+    imageUrl,
+    title,
+    types,
+    sizes,
+    price,
+}) => {
+    const [typeActive, setTypeActive] = React.useState<number>(0);
+    const [sizeActive, setSizeActive] = React.useState<number>(0);
 
     const dispatch = useDispatch();
     const drawerItem = useSelector((state) =>
@@ -64,6 +80,7 @@ export const PizzaBlock = ({ id, imageUrl, title, types, sizes, price }) => {
             </Link>
             <div className="pizza-block__bottom">
                 <div className="pizza-block__price">от {price} ₽</div>
+
                 <button
                     onClick={onClickButtonItem}
                     className="button button--outline button--add"
@@ -81,7 +98,7 @@ export const PizzaBlock = ({ id, imageUrl, title, types, sizes, price }) => {
                         />
                     </svg>
                     <span>Добавить</span>
-                    <i>{count}</i>
+                    {count > 0 && <i>{count}</i>}
                 </button>
             </div>
         </div>

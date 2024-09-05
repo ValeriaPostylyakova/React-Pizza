@@ -1,15 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { categories } from '../Categories.jsx';
-import { typeNames } from '../PizzaBlock/PizzaBlock.jsx';
+import { categories } from '../Categories.tsx';
+import { typeNames } from '../PizzaBlock/PizzaBlock.tsx';
 
-import arrow from '../../assets/img/grey-arrow-left.svg';
+import arrow from '../../assets/img/grey-arrow-left.svg?url';
 import style from '../../page/PizzaFullBlock/PizzaFullBlock.module.scss';
 
 import { useSelector } from 'react-redux';
 
-export const FullPizza = () => {
+export const FullPizza: React.FC = () => {
     const { pizza } = useSelector((state) => state.fullPizza);
 
     return (

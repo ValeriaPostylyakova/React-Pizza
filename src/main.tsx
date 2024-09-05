@@ -3,9 +3,9 @@ import { createRoot } from 'react-dom/client';
 import { store } from './redux/store.js';
 import { Provider } from 'react-redux';
 
-import App from './App.jsx';
-import NotFound from './page/NotFound/NotFound.jsx';
-import Drawer from './page/Drawer.jsx';
+import App from './App.js';
+import NotFound from './page/NotFound/NotFound.tsx';
+import Drawer from './page/Drawer.tsx';
 import PizzaFullBlock from './page/PizzaFullBlock/PizzaFullBlock.jsx';
 
 import './index.scss';

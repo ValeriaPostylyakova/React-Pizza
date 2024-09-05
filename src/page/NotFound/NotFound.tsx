@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 import { Link } from 'react-router-dom';
 import { useRouteError } from 'react-router-dom';
 
@@ -6,8 +8,9 @@ import style from './NotFound.module.scss';
 import logo from '../../assets/img/pizza-logo.svg';
 import notFoundImg from '../../assets/img/pizza-404.jpg';
 
-const notFound = () => {
-    const error = useRouteError();
+const notFound: React.FC = () => {
+    const error: any = useRouteError();
+    console.log(error);
     console.error(error);
 
     return (
