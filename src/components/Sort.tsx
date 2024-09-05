@@ -24,8 +24,12 @@ export const Sort = () => {
     const sortRef = React.useRef<HTMLDivElement | null>(null);
 
     React.useEffect(() => {
-        const handleClickApp = (event: any) => {
-            if (!event.composedPath().includes(sortRef.current)) {
+        const handleClickApp = (event: MouseEvent) => {
+            const _event = event as MouseEvent & {
+                composedPath(): Node[];
+            }
+
+            if (sortRef.current && !_event.composedPath().includes(sortRef.current)) {
                 setVisiblePopap(false);
             }
         };

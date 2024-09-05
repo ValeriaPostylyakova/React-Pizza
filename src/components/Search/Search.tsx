@@ -7,7 +7,7 @@ import close from '../../assets/img/close.png';
 import style from './Search.module.scss';
 
 type SearchValueProps = {
-    setSearchValue: any;
+    setSearchValue: (value: string) => void;
 }
 
 export const Search: React.FC<SearchValueProps> = ({ setSearchValue }) => {
@@ -17,17 +17,18 @@ export const Search: React.FC<SearchValueProps> = ({ setSearchValue }) => {
 
     const onClickClear = () => {
         setSearchValue('');
+        setValue('');
         inputRef.current?.focus();
     };
 
     const updateValue = React.useCallback(
-        debounce((value: any) => {
+        debounce((value: string) => {
             setSearchValue(value);
         }, 300),
         []
     );
 
-    const onChangeInput = (event: any) => {
+    const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
         setValue(event.target.value);
         updateValue(event.target.value);
     };

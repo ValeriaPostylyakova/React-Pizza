@@ -8,8 +8,8 @@ import { Search } from './Search/Search.tsx';
 import * as React from 'react';
 
 type searchProps = {
-    setSearchValue: any;
-};
+    setSearchValue: () => void;
+}
 
 export const Header: React.FC<searchProps> = ({ setSearchValue }) => {
     const { totalPrice, items } = useSelector(drawerSelect);

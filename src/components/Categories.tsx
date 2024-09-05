@@ -2,7 +2,7 @@ import * as React from 'react';
 
 type CategoriesProps = {
     categoryId: number;
-    onClickCategory: any;
+    onClickCategory: (i: number) => void;
 };
 
 export const categories: string[] = [

@@ -38,7 +38,7 @@ export const FullPizza: React.FC = () => {
                 <div>
                     <p className={style.pizza__size}>Размеры</p>
                     <div className={style.pizza__container_button}>
-                        {pizza.sizes?.map((size, index) => (
+                        {pizza.sizes?.map((size: number, index: number) => (
                             <div key={index}>{size} см.</div>
                         ))}
                     </div>
@@ -46,7 +46,7 @@ export const FullPizza: React.FC = () => {
                 <div>
                     <p className={style.pizza__size}>Тесто</p>
                     <div className={style.pizza__container_button}>
-                        {pizza.types?.map((type, index) => (
+                        {pizza.types?.map((type: number, index: number) => (
                             <div key={index}>{typeNames[type]}</div>
                         ))}
                     </div>
