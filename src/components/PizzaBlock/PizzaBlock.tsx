@@ -2,7 +2,9 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { addItems } from '../../redux/slices/drawerSlice.js';
+import { RootState } from '../../redux/store.ts';
+import { addItems, ObjItemsState } from '../../redux/slices/drawerSlice.ts';
+
 
 export const typeNames = ['тонкое', 'традиционное'];
 
@@ -27,21 +29,21 @@ export const PizzaBlock: React.FC<PizzaBlockProps> = ({
     const [sizeActive, setSizeActive] = React.useState<number>(0);
 
     const dispatch = useDispatch();
-    const drawerItem = useSelector((state) =>
+    const drawerItem = useSelector((state: RootState) =>
         state.drawer.items.find((obj) => obj.id === id)
     );
 
     const count = drawerItem ? drawerItem.count : 0;
 
     const onClickButtonItem = () => {
-        const obj = {
+        const obj: ObjItemsState = {
             id,
-            currentId: id,
             imageUrl,
             title,
             types: typeNames[typeActive],
             sizes: sizes[sizeActive],
             price,
+            count: 0,
         };
 
         dispatch(addItems(obj));

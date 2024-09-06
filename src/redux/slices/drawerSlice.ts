@@ -1,6 +1,23 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { RootState } from '../store';
+import { getReduceItem } from '../../hooks/useReduceItem';
 
-const initialState = {
+export type ObjItemsState = {
+    id: number;
+    imageUrl: string;
+    title: string;
+    types: string;
+    sizes: string;
+    price: number;
+    count: number;
+}
+
+export interface DrawerState {
+    totalPrice: number,
+    items: ObjItemsState[];
+}
+
+const initialState: DrawerState = {
     items: [],
     totalPrice: 0,
 };
@@ -9,7 +26,7 @@ const drawerSlice = createSlice({
     name: 'drawer',
     initialState,
     reducers: {
-        addItems(state, action) {
+        addItems(state, action: PayloadAction<ObjItemsState>) {
             const findItem = state.items.find(
                 (obj) => obj.id === action.payload.id
             );
@@ -22,13 +39,10 @@ const drawerSlice = createSlice({
                     count: 1,
                 });
             }
-
-            state.totalPrice = state.items.reduce((currentSumm, obj) => {
-                return currentSumm + obj.price * obj.count;
-            }, 0);
+            getReduceItem(state);
         },
 
-        decrementCount(state, action) {
+        decrementCount(state, action: PayloadAction<ObjItemsState>) {
             const findItem = state.items.find(
                 (obj) => obj.id === action.payload.id
             );
@@ -36,19 +50,14 @@ const drawerSlice = createSlice({
             if (findItem) {
                 findItem.count--;
             }
-
-            state.totalPrice = state.items.reduce((currentSumm, obj) => {
-                return currentSumm + obj.price * obj.count;
-            }, 0);
+            getReduceItem(state);
         },
 
-        removeItem(state, action) {
+        removeItem(state, action: PayloadAction<ObjItemsState>) {
             state.items = state.items.filter(
                 (obj) => obj.id !== action.payload.id
             );
-            state.totalPrice = state.items.reduce((currentSumm, obj) => {
-                return currentSumm + obj.price * obj.count;
-            }, 0);
+            getReduceItem(state);
         },
         clearDrawer(state) {
             state.items = [];
@@ -57,7 +66,7 @@ const drawerSlice = createSlice({
     },
 });
 
-export const drawerSelect = (state) => state.drawer;
+export const drawerSelect = (state: RootState) => state.drawer;
 
 export const { addItems, clearDrawer, removeItem, decrementCount } =
     drawerSlice.actions;

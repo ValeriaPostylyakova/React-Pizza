@@ -2,13 +2,15 @@ import * as React from 'react';
 import qs from 'qs';
 
 import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from '../redux/store.ts';
+
 import {
     setCategoryId,
     setPaginationPage,
     setFilterHome,
-} from '../redux/slices/filterSlice.js';
+} from '../redux/slices/filterSlice.ts';
 
-import { fetchPizzas } from '../redux/slices/pizzasSlice.js';
+import { fetchPizzas } from '../redux/slices/pizzasSlice.ts';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -31,10 +33,10 @@ const Home: React.FC<SearchValueProps> = ({ searchValue }) => {
     const getParams = React.useRef(false);
 
     const { categoryId, sortValue, paginationPage } = useSelector(
-        (state) => state.filter
+        (state: RootState) => state.filter
     );
 
-    const { status, pizzasItems } = useSelector((state) => state.pizzas);
+    const { status, pizzasItems } = useSelector((state: RootState) => state.pizzas);
 
     const onClickCategory = (index: number) => {
         dispatch(setCategoryId(index));

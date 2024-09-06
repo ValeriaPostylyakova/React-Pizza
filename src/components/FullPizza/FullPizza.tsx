@@ -1,13 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import { useSelector } from 'react-redux';
+// import { RootState } from '../../redux/store.ts';
+
 import { categories } from '../Categories.tsx';
 import { typeNames } from '../PizzaBlock/PizzaBlock.tsx';
 
-import arrow from '../../assets/img/grey-arrow-left.svg?url';
+import arrow from '../../assets/img/grey-arrow-left.svg';
 import style from '../../page/PizzaFullBlock/PizzaFullBlock.module.scss';
 
-import { useSelector } from 'react-redux';
 
 export const FullPizza: React.FC = () => {
     const { pizza } = useSelector((state) => state.fullPizza);

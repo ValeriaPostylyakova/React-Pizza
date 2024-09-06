@@ -4,7 +4,7 @@ import {
     removeItem,
     addItems,
     decrementCount,
-} from '../redux/slices/drawerSlice.js';
+} from '../redux/slices/drawerSlice.ts';
 import { useDispatch } from 'react-redux';
 
 import plus from '../assets/img/plus.svg';

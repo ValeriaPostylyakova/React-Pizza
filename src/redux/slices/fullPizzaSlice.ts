@@ -1,17 +1,29 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
+
+type FullPizzaParams = {
+    id: number;
+}
+
+import { PizzasItem } from './pizzasSlice';
 
 export const fetchFullPizzas = createAsyncThunk(
     'fullPizza/fetchPizzasStatus',
-    async ({ id }) => {
+    async (params: FullPizzaParams) => {
+        const { id } = params;
         const { data } = await axios.get(
             `https://7ca40464e2c51584.mokky.dev/pizza/${id}`
         );
-        return data;
+        return data as PizzasItem;
     }
 );
 
-const initialState = {
+interface FullPizzaState {
+    pizza: {};
+    status: 'loading' | 'success' | 'error';
+}
+
+const initialState: FullPizzaState = {
     pizza: {},
     status: 'loading',
 };
@@ -20,7 +32,7 @@ const fullPizzaSlice = createSlice({
     name: 'fullPizza',
     initialState,
     reducers: {
-        setPizza(state, action) {
+        setPizza(state, action: PayloadAction<PizzasItem>) {
             state.pizza = action.payload;
         },
     },

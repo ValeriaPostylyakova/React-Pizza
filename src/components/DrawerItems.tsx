@@ -1,8 +1,10 @@
 import * as React from 'react';
 
 import { Link } from 'react-router-dom';
+
 import { useSelector, useDispatch } from 'react-redux';
-import { clearDrawer } from '../redux/slices/drawerSlice.js';
+import { RootState } from '../redux/store.ts';
+import { clearDrawer } from '../redux/slices/drawerSlice.ts';
 
 import { DrawerItem } from './DrawerItem.tsx';
 
@@ -11,7 +13,7 @@ import cartClear from '../assets/img/trash.svg';
 import arrow from '../assets/img/grey-arrow-left.svg';
 
 const DrawerItems: React.FC = () => {
-    const { items, totalPrice } = useSelector((state) => state.drawer);
+    const { items, totalPrice } = useSelector((state: RootState) => state.drawer);
     const dispatch = useDispatch();
 
     const totalCount = items.reduce((summ: number, obj: any) => obj.count + summ, 0);

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import { useSelector } from 'react-redux';
-import { drawerSelect } from '../redux/slices/drawerSlice.js';
+import { drawerSelect } from '../redux/slices/drawerSlice.ts';
 
 import logo from '../assets/img/pizza-logo.svg';
 import { Search } from './Search/Search.tsx';

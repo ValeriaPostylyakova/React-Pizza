@@ -1,7 +1,8 @@
 import * as React from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { setSortValue } from '../redux/slices/filterSlice.js';
+import { RootState } from '../redux/store.ts';
+import { setSortValue } from '../redux/slices/filterSlice.ts';
 
 type SortItem = {
     name: string;
@@ -19,7 +20,7 @@ export const Sort = () => {
     const [visiblePopap, setVisiblePopap] = React.useState(false);
 
     const dispatch = useDispatch();
-    const sortValue = useSelector((state) => state.filter.sortValue);
+    const sortValue = useSelector((state: RootState) => state.filter.sortValue);
 
     const sortRef = React.useRef<HTMLDivElement | null>(null);
 
