@@ -10,7 +10,7 @@ const App: React.FC = () => {
 
     return (
         <div className="wrapper">
-            <Header searchValue={searchValue} setSearchValue={setSearchValue}/>
+            <Header setSearchValue={() => setSearchValue} />
             <div className="content">
                 <div className="container">
                     <Home searchValue={searchValue} />

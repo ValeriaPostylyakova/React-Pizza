@@ -10,10 +10,10 @@ export type ObjItemsState = {
     sizes: string;
     price: number;
     count: number;
-}
+};
 
 export interface DrawerState {
-    totalPrice: number,
+    totalPrice: number;
     items: ObjItemsState[];
 }
 

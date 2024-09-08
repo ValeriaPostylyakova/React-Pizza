@@ -7,19 +7,26 @@ import { RootState } from '../redux/store.ts';
 import { clearDrawer } from '../redux/slices/drawerSlice.ts';
 
 import { DrawerItem } from './DrawerItem.tsx';
+import { AppDispatch } from '../redux/store.ts';
+import { ObjItemsState } from '../redux/slices/drawerSlice.ts';
 
 import drawer from '../assets/img/cart.png';
 import cartClear from '../assets/img/trash.svg';
 import arrow from '../assets/img/grey-arrow-left.svg';
 
 const DrawerItems: React.FC = () => {
-    const { items, totalPrice } = useSelector((state: RootState) => state.drawer);
-    const dispatch = useDispatch();
+    const { items, totalPrice } = useSelector(
+        (state: RootState) => state.drawer
+    );
+    const dispatch: AppDispatch = useDispatch();
 
-    const totalCount = items.reduce((summ: number, obj: any) => obj.count + summ, 0);
+    const totalCount = items.reduce(
+        (summ: number, obj: ObjItemsState) => obj.count + summ,
+        0
+    );
 
     const onClickClearDrawer = () => {
-        if (window.confirm('Вы действительно хотите очистить всю коризну?')) {
+        if (window.confirm('Вы действительно хотите очистить всю корзину?')) {
             dispatch(clearDrawer());
         }
     };

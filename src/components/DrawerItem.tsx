@@ -6,6 +6,8 @@ import {
     decrementCount,
 } from '../redux/slices/drawerSlice.ts';
 import { useDispatch } from 'react-redux';
+import { AppDispatch } from '../redux/store.ts';
+import { ObjItemsState } from '../redux/slices/drawerSlice.ts';
 
 import plus from '../assets/img/plus.svg';
 import clear from '../assets/img/close.png';
@@ -21,6 +23,10 @@ type CartItemProps = {
     count: number;
 };
 
+type addItems = {
+    id: number;
+};
+
 export const DrawerItem: React.FC<CartItemProps> = ({
     id,
     imageUrl,
@@ -30,18 +36,18 @@ export const DrawerItem: React.FC<CartItemProps> = ({
     price,
     count,
 }) => {
-    const dispatch = useDispatch();
+    const dispatch: AppDispatch = useDispatch();
     const totalPrice = price * count;
 
     const onClickPlus = () => {
-        dispatch(addItems({ id }));
+        dispatch(addItems({ id } as ObjItemsState));
     };
 
     const onClickMinus = () => {
-        dispatch(decrementCount({ id }));
+        dispatch(decrementCount({ id } as ObjItemsState));
         if (count <= 1) {
             window.confirm('Вы действительно хотите удалить этот товар?');
-            dispatch(removeItem({ id }));
+            dispatch(removeItem({ id } as ObjItemsState));
         }
     };
 
@@ -50,7 +56,7 @@ export const DrawerItem: React.FC<CartItemProps> = ({
             dispatch(
                 removeItem({
                     id,
-                })
+                } as ObjItemsState)
             );
         }
     };

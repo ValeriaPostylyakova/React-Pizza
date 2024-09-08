@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { useSelector } from 'react-redux';
-// import { RootState } from '../../redux/store.ts';
+import { RootState } from '../../redux/store.ts';
 
 import { categories } from '../Categories.tsx';
 import { typeNames } from '../PizzaBlock/PizzaBlock.tsx';
@@ -10,9 +10,8 @@ import { typeNames } from '../PizzaBlock/PizzaBlock.tsx';
 import arrow from '../../assets/img/grey-arrow-left.svg';
 import style from '../../page/PizzaFullBlock/PizzaFullBlock.module.scss';
 
-
 export const FullPizza: React.FC = () => {
-    const { pizza } = useSelector((state) => state.fullPizza);
+    const { pizza } = useSelector((state: RootState) => state.fullPizza);
 
     return (
         <>

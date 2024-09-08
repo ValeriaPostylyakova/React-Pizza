@@ -2,7 +2,7 @@ import * as React from 'react';
 import qs from 'qs';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../redux/store.ts';
+import { AppDispatch, RootState } from '../redux/store.ts';
 
 import {
     setCategoryId,
@@ -23,10 +23,10 @@ import { sortNameArray } from '../components/Sort.tsx';
 
 type SearchValueProps = {
     searchValue: string;
-}
+};
 
 const Home: React.FC<SearchValueProps> = ({ searchValue }) => {
-    const dispatch = useDispatch();
+    const dispatch: AppDispatch = useDispatch();
 
     const navigate = useNavigate();
     const isParams = React.useRef(false);
@@ -36,7 +36,9 @@ const Home: React.FC<SearchValueProps> = ({ searchValue }) => {
         (state: RootState) => state.filter
     );
 
-    const { status, pizzasItems } = useSelector((state: RootState) => state.pizzas);
+    const { status, pizzasItems } = useSelector(
+        (state: RootState) => state.pizzas
+    );
 
     const onClickCategory = (index: number) => {
         dispatch(setCategoryId(index));
@@ -80,6 +82,7 @@ const Home: React.FC<SearchValueProps> = ({ searchValue }) => {
             const sortValue = sortNameArray.find(
                 (obj) => obj.sort === params.sort
             );
+
             dispatch(
                 setFilterHome({
                     ...params,

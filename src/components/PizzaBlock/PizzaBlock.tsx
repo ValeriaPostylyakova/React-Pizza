@@ -2,9 +2,8 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../redux/store.ts';
+import { AppDispatch, RootState } from '../../redux/store.ts';
 import { addItems, ObjItemsState } from '../../redux/slices/drawerSlice.ts';
-
 
 export const typeNames = ['тонкое', 'традиционное'];
 
@@ -28,7 +27,7 @@ export const PizzaBlock: React.FC<PizzaBlockProps> = ({
     const [typeActive, setTypeActive] = React.useState<number>(0);
     const [sizeActive, setSizeActive] = React.useState<number>(0);
 
-    const dispatch = useDispatch();
+    const dispatch: AppDispatch = useDispatch();
     const drawerItem = useSelector((state: RootState) =>
         state.drawer.items.find((obj) => obj.id === id)
     );

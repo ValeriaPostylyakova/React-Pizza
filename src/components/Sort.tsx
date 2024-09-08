@@ -1,25 +1,26 @@
 import * as React from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../redux/store.ts';
+import { AppDispatch, RootState } from '../redux/store.ts';
 import { setSortValue } from '../redux/slices/filterSlice.ts';
+import { ValueSort } from '../redux/slices/filterSlice.ts';
 
-type SortItem = {
+export type SortItem = {
     name: string;
-    sort: string;
+    sort: ValueSort;
 };
 
 export const sortNameArray: SortItem[] = [
-    { name: 'популярности', sort: '-rating' },
-    { name: 'цене (по возрастанию)', sort: 'price' },
-    { name: 'цене (по убыванию)', sort: '-price' },
-    { name: 'алфавиту', sort: 'title' },
+    { name: 'популярности', sort: ValueSort.RATING },
+    { name: 'цене (по возрастанию)', sort: ValueSort.PRICE_ASC },
+    { name: 'цене (по убыванию)', sort: ValueSort.PRICE_DESC },
+    { name: 'алфавиту', sort: ValueSort.TITLE },
 ];
 
 export const Sort = () => {
     const [visiblePopap, setVisiblePopap] = React.useState(false);
 
-    const dispatch = useDispatch();
+    const dispatch: AppDispatch = useDispatch();
     const sortValue = useSelector((state: RootState) => state.filter.sortValue);
 
     const sortRef = React.useRef<HTMLDivElement | null>(null);
@@ -28,9 +29,12 @@ export const Sort = () => {
         const handleClickApp = (event: MouseEvent) => {
             const _event = event as MouseEvent & {
                 composedPath(): Node[];
-            }
+            };
 
-            if (sortRef.current && !_event.composedPath().includes(sortRef.current)) {
+            if (
+                sortRef.current &&
+                !_event.composedPath().includes(sortRef.current)
+            ) {
                 setVisiblePopap(false);
             }
         };
@@ -40,6 +44,7 @@ export const Sort = () => {
     }, []);
 
     const onClickSort = (obj: SortItem) => {
+        console.log(obj);
         dispatch(setSortValue(obj));
         setVisiblePopap(false);
     };

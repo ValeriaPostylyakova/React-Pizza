@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 
 import { useSelector } from 'react-redux';
 import { drawerSelect } from '../redux/slices/drawerSlice.ts';
+import { ObjItemsState } from '../redux/slices/drawerSlice.ts';
 
 import logo from '../assets/img/pizza-logo.svg';
 import { Search } from './Search/Search.tsx';
@@ -9,13 +10,13 @@ import * as React from 'react';
 
 type searchProps = {
     setSearchValue: () => void;
-}
+};
 
 export const Header: React.FC<searchProps> = ({ setSearchValue }) => {
     const { totalPrice, items } = useSelector(drawerSelect);
 
     const totalCount = items.reduce(
-        (summ: number, obj: any) => obj.count + summ,
+        (summ: number, obj: ObjItemsState) => obj.count + summ,
         0
     );
 

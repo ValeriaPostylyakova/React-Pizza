@@ -1,9 +1,11 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
+import { Status } from './pizzasSlice';
+
 import axios from 'axios';
 
 type FullPizzaParams = {
-    id: number;
-}
+    id: string | undefined;
+};
 
 import { PizzasItem } from './pizzasSlice';
 
@@ -19,13 +21,25 @@ export const fetchFullPizzas = createAsyncThunk(
 );
 
 interface FullPizzaState {
-    pizza: {};
-    status: 'loading' | 'success' | 'error';
+    pizza: PizzasItem;
+    status: string;
 }
 
 const initialState: FullPizzaState = {
-    pizza: {},
-    status: 'loading',
+    pizza: {
+        id: 0,
+        imageUrl:
+            'https://media.dodostatic.net/image/r:292x292/11EE7D612FC7B7FCA5BE822752BEE1E5.avif',
+        title: 'Пепперони Фреш',
+        types: [0, 1],
+        sizes: [26, 30, 40],
+        price: 803,
+        category: 1,
+        rating: 4,
+        description:
+            'Пикантная пепперони, увеличенная порция моцареллы, томаты, фирменный томатный соус.',
+    },
+    status: Status.LOADING,
 };
 
 const fullPizzaSlice = createSlice({
@@ -39,17 +53,19 @@ const fullPizzaSlice = createSlice({
 
     extraReducers: (builder) => {
         builder.addCase(fetchFullPizzas.pending, (state) => {
-            state.status = 'loading';
+            state.status = Status.LOADING;
         });
 
-        builder.addCase(fetchFullPizzas.fulfilled, (state, action) => {
-            state.status = 'success';
-            state.pizza = action.payload;
-        });
+        builder.addCase(
+            fetchFullPizzas.fulfilled,
+            (state, action: PayloadAction<PizzasItem>) => {
+                state.status = Status.SUCCESS;
+                state.pizza = action.payload;
+            }
+        );
 
         builder.addCase(fetchFullPizzas.rejected, (state) => {
-            state.status = 'error';
-            state.pizza = {};
+            state.status = Status.ERROR;
         });
     },
 });

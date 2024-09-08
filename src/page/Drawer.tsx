@@ -10,7 +10,7 @@ const Drawer = () => {
 
     return (
         <div className="wrapper">
-            <Header setSearchValue={null} />
+            <Header setSearchValue={() => null} />
             {items.length > 0 ? <DrawerItems /> : <DrawerEmpty />}
         </div>
     );
