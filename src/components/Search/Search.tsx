@@ -8,7 +8,7 @@ import style from './Search.module.scss';
 
 type SearchValueProps = {
     setSearchValue: (value: string) => void;
-}
+};
 
 export const Search: React.FC<SearchValueProps> = ({ setSearchValue }) => {
     const [value, setValue] = React.useState<string>('');

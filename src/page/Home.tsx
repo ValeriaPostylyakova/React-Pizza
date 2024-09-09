@@ -10,7 +10,7 @@ import {
     setFilterHome,
 } from '../redux/slices/filterSlice.ts';
 
-import { fetchPizzas } from '../redux/slices/pizzasSlice.ts';
+import { fetchPizzas, PizzasItem } from '../redux/slices/pizzasSlice.ts';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -48,9 +48,9 @@ const Home: React.FC<SearchValueProps> = ({ searchValue }) => {
         dispatch(setPaginationPage(index));
     };
 
-    const filterPizzasData = pizzasItems.filter((dataPizza: any) => {
+    const filterPizzasData = pizzasItems.filter((dataPizza: PizzasItem) => {
         const pizzaName = dataPizza.title.toLowerCase();
-
+        console.log(searchValue);
         return pizzaName.includes(searchValue.toLowerCase());
     });
 

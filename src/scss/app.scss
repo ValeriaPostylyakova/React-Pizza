@@ -25,6 +25,11 @@ body {
 .content {
     padding: 40px 0;
 
+    &__active {
+        pointer-events: none;
+        padding: 40px 0;
+    }
+
     &__title {
         margin: 50px 0;
         font-weight: 700;
@@ -192,6 +197,15 @@ body {
                         display: none;
                     }
                 }
+                &:disabled {
+                    opacity: 0.3;
+                    border-color: #777777;
+                    cursor: default;
+
+                    &:hover {
+                        background-color: transparent;
+                    }
+                }
             }
 
             b {
@@ -250,7 +264,6 @@ body {
 
         &-details {
             display: flex;
-            //align-items: center;
             justify-content: space-between;
 
             span {

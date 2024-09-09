@@ -44,7 +44,6 @@ export const Sort = () => {
     }, []);
 
     const onClickSort = (obj: SortItem) => {
-        console.log(obj);
         dispatch(setSortValue(obj));
         setVisiblePopap(false);
     };
