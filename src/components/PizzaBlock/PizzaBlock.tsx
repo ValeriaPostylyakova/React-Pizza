@@ -14,6 +14,7 @@ type PizzaBlockProps = {
     types: number[];
     sizes: string[];
     price: number;
+    key?: number;
 };
 
 export const PizzaBlock: React.FC<PizzaBlockProps> = ({
@@ -83,6 +84,7 @@ export const PizzaBlock: React.FC<PizzaBlockProps> = ({
                 <div className="pizza-block__price">от {price} ₽</div>
 
                 <button
+                    disabled={count === 5}
                     onClick={onClickButtonItem}
                     className="button button--outline button--add"
                 >

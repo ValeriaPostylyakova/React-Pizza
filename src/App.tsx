@@ -6,14 +6,12 @@ import Home from './page/Home.tsx';
 import './scss/app.scss';
 
 const App: React.FC = () => {
-    const [searchValue, setSearchValue] = React.useState<string>('');
-
     return (
         <div className="wrapper">
-            <Header setSearchValue={() => setSearchValue} />
+            <Header />
             <div className="content">
                 <div className="container">
-                    <Home searchValue={searchValue} />
+                    <Home />
                 </div>
             </div>
         </div>

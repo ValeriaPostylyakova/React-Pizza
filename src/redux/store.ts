@@ -3,6 +3,7 @@ import filter from './slices/filterSlice.ts';
 import drawer from './slices/drawerSlice.ts';
 import pizzas from './slices/pizzasSlice.ts';
 import fullPizza from './slices/fullPizzaSlice.ts';
+import search from './slices/searchSlice.ts';
 
 export const store = configureStore({
     reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
         drawer,
         pizzas,
         fullPizza,
+        search,
     },
 });
 

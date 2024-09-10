@@ -12,9 +12,9 @@ import { ObjItemsState } from '../redux/slices/drawerSlice.ts';
 
 import Modal from './ModalConfirm/Modal.tsx';
 
-import drawer from '../assets/img/cart.png';
-import cartClear from '../assets/img/trash.svg';
-import arrow from '../assets/img/grey-arrow-left.svg';
+import drawerItems from '../assets/img/cart.png';
+import cartClearItems from '../assets/img/trash.svg';
+import arrowItems from '../assets/img/grey-arrow-left.svg';
 
 const DrawerItems: React.FC = () => {
     const [showModal, setShowModal] = React.useState<boolean>(false);
@@ -37,6 +37,10 @@ const DrawerItems: React.FC = () => {
         dispatch(clearDrawer());
         setShowModal(false);
     };
+
+    const drawer: string = String(drawerItems);
+    const cartClear: string = String(cartClearItems);
+    const arrow: string = String(arrowItems);
 
     return (
         <>

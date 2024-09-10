@@ -11,24 +11,25 @@ import { ObjItemsState } from '../redux/slices/drawerSlice.ts';
 
 import Modal from './ModalConfirm/Modal.tsx';
 
-import plus from '../assets/img/plus.svg';
-import clear from '../assets/img/close.png';
-import minus from '../assets/img/minus.svg';
+import plusItem from '../assets/img/plus.svg';
+import clearItem from '../assets/img/close.png';
+import minusItem from '../assets/img/minus.svg';
+
+const plus: string = String(plusItem);
+const minus: string = String(minusItem);
+const clear: string = String(clearItem);
 
 type CartItemProps = {
     id: number;
     imageUrl: string;
+    price: number;
+    setShowModal: (showModal: boolean) => void;
+    showModal: boolean;
+    sizes: number;
     title: string;
     types: string;
-    sizes: number;
-    price: number;
     count: number;
-    showModal: boolean;
-    setShowModal: (showModal: boolean) => void;
-};
-
-type addItems = {
-    id: number;
+    key?: unknown;
 };
 
 export const DrawerItem: React.FC<CartItemProps> = ({

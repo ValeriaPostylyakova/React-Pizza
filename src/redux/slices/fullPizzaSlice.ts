@@ -3,7 +3,7 @@ import { Status } from './pizzasSlice';
 
 import axios from 'axios';
 
-type FullPizzaParams = {
+export type FullPizzaParams = {
     id: string | undefined;
 };
 

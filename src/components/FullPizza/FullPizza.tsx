@@ -7,7 +7,8 @@ import { RootState } from '../../redux/store.ts';
 import { categories } from '../Categories.tsx';
 import { typeNames } from '../PizzaBlock/PizzaBlock.tsx';
 
-import arrow from '../../assets/img/grey-arrow-left.svg';
+import arrowImg from '../../assets/img/grey-arrow-left.svg';
+const arrow: string = String(arrowImg);
 import style from '../../page/PizzaFullBlock/PizzaFullBlock.module.scss';
 
 export const FullPizza: React.FC = () => {

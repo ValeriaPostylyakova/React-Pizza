@@ -21,11 +21,7 @@ import { PizzaBlock } from '../components/PizzaBlock/PizzaBlock.tsx';
 import { Pagination } from '../components/Pagination/Pagination.tsx';
 import { sortNameArray } from '../components/Sort.tsx';
 
-type SearchValueProps = {
-    searchValue: string;
-};
-
-const Home: React.FC<SearchValueProps> = ({ searchValue }) => {
+const Home: React.FC = ({}) => {
     const dispatch: AppDispatch = useDispatch();
 
     const navigate = useNavigate();
@@ -40,6 +36,8 @@ const Home: React.FC<SearchValueProps> = ({ searchValue }) => {
         (state: RootState) => state.pizzas
     );
 
+    const { searchValue } = useSelector((state: RootState) => state.search);
+
     const onClickCategory = (index: number) => {
         dispatch(setCategoryId(index));
     };
@@ -50,7 +48,6 @@ const Home: React.FC<SearchValueProps> = ({ searchValue }) => {
 
     const filterPizzasData = pizzasItems.filter((dataPizza: PizzasItem) => {
         const pizzaName = dataPizza.title.toLowerCase();
-        console.log(searchValue);
         return pizzaName.includes(searchValue.toLowerCase());
     });
 

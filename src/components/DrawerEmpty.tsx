@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
-import drawer from '../assets/img/empty-cart.png';
+import draw from '../assets/img/empty-cart.png';
+const drawer: string = String(draw);
 
 const DrawerEmpty: React.FC = () => {
     return (

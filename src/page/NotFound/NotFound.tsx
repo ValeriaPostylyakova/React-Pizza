@@ -6,19 +6,21 @@ import { useRouteError } from 'react-router-dom';
 import style from './NotFound.module.scss';
 
 import logo from '../../assets/img/pizza-logo.svg';
-import notFoundImg from '../../assets/img/pizza-404.jpg';
+import foundImg from '../../assets/img/pizza-404.jpg';
 
 const notFound: React.FC = () => {
     const error: any = useRouteError();
-    console.log(error);
     console.error(error);
+
+    const notFoundLogo: string = String(logo);
+    const notFoundImg: string = String(foundImg);
 
     return (
         <div className={style.wrapper_404}>
             <div className={style.container} id="error-page">
                 <div className={style.container__hero}>
                     <div className={style.container__hero_logo}>
-                        <img width="38" src={logo} alt="Pizza logo" />
+                        <img width="38" src={notFoundLogo} alt="Pizza logo" />
                         <div>
                             <h1>React Pizza</h1>
                             <p>самая вкусная пицца</p>

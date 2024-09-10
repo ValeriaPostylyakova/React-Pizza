@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../store';
-import { getReduceItem } from '../../hooks/useReduceItem';
+import { getReduceItem } from '../../utils/useReduceItem.ts';
+
+import { getLSItem } from '../../utils/getLSItem.ts';
 
 export type ObjItemsState = {
     id: number;
@@ -17,9 +19,11 @@ export interface DrawerState {
     items: ObjItemsState[];
 }
 
+const { items, totalPrice } = getLSItem();
+
 const initialState: DrawerState = {
-    items: [],
-    totalPrice: 0,
+    items: items,
+    totalPrice: totalPrice,
 };
 
 const drawerSlice = createSlice({
