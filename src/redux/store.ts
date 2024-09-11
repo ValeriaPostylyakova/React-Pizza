@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import filter from './slices/filterSlice.ts';
-import drawer from './slices/drawerSlice.ts';
-import pizzas from './slices/pizzasSlice.ts';
-import fullPizza from './slices/fullPizzaSlice.ts';
-import search from './slices/searchSlice.ts';
+import filter from './slices/filter/slice.ts';
+import drawer from './slices/drawer/slice.ts';
+import pizzas from './slices/pizzas/slice.ts';
+import fullPizza from './slices/fullPizza/slice.ts';
+import search from './slices/search/slice.ts';
 
 export const store = configureStore({
     reducer: {

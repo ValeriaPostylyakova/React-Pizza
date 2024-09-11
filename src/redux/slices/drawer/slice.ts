@@ -1,23 +1,7 @@
+import { ObjItemsState, DrawerState } from './types.ts';
+import { getLSItem } from '../../../utils/getLSItem.ts';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState } from '../store';
-import { getReduceItem } from '../../utils/useReduceItem.ts';
-
-import { getLSItem } from '../../utils/getLSItem.ts';
-
-export type ObjItemsState = {
-    id: number;
-    imageUrl: string;
-    title: string;
-    types: string;
-    sizes: string;
-    price: number;
-    count: number;
-};
-
-export interface DrawerState {
-    totalPrice: number;
-    items: ObjItemsState[];
-}
+import { getReduceItem } from '../../../utils/useReduceItem.ts';
 
 const { items, totalPrice } = getLSItem();
 
@@ -69,8 +53,6 @@ const drawerSlice = createSlice({
         },
     },
 });
-
-export const drawerSelect = (state: RootState) => state.drawer;
 
 export const { addItems, clearDrawer, removeItem, decrementCount } =
     drawerSlice.actions;

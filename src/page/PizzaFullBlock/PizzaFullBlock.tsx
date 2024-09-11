@@ -2,7 +2,7 @@ import React from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState, AppDispatch } from '../../redux/store.ts';
-import { fetchFullPizzas } from '../../redux/slices/fullPizzaSlice.ts';
+import { fetchFullPizzas } from '../../redux/slices/fullPizza/asyncAction.ts';
 
 import { useParams } from 'react-router-dom';
 

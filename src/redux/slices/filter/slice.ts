@@ -1,18 +1,7 @@
+import { SortItem } from '../../../components/Sort.tsx';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { SortItem } from '../../components/Sort';
 
-export interface FilterState {
-    categoryId: number;
-    sortValue: SortItem;
-    paginationPage: number;
-}
-
-export enum ValueSort {
-    RATING = '-rating',
-    PRICE_ASC = 'price',
-    PRICE_DESC = '-price',
-    TITLE = 'title',
-}
+import { ValueSort, FilterState } from './types.ts';
 
 const initialState: FilterState = {
     categoryId: 0,

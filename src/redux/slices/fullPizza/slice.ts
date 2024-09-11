@@ -1,29 +1,7 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import { Status } from './pizzasSlice';
-
-import axios from 'axios';
-
-export type FullPizzaParams = {
-    id: string | undefined;
-};
-
-import { PizzasItem } from './pizzasSlice';
-
-export const fetchFullPizzas = createAsyncThunk(
-    'fullPizza/fetchPizzasStatus',
-    async (params: FullPizzaParams) => {
-        const { id } = params;
-        const { data } = await axios.get(
-            `https://7ca40464e2c51584.mokky.dev/pizza/${id}`
-        );
-        return data as PizzasItem;
-    }
-);
-
-interface FullPizzaState {
-    pizza: PizzasItem;
-    status: string;
-}
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { FullPizzaState } from './types.ts';
+import { PizzasItem, Status } from '../pizzas/types.ts';
+import { fetchFullPizzas } from './asyncAction.ts';
 
 const initialState: FullPizzaState = {
     pizza: {

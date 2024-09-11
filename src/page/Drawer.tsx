@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { drawerSelect } from '../redux/slices/drawerSlice.ts';
+import { drawerSelect } from '../redux/slices/drawer/selectors.ts';
 
 import { Header } from '../components/Header.tsx';
 import DrawerItems from '../components/DrawerItems.tsx';

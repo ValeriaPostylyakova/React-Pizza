@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../redux/store';
-import { setSearchValue } from '../../redux/slices/searchSlice';
+import { setSearchValue } from '../../redux/slices/search/slice.ts';
 
 import searchImg from '../../assets/img/search.png';
 import closeImg from '../../assets/img/close.png';

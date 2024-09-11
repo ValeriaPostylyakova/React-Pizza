@@ -1,8 +1,8 @@
 import { Link, useLocation } from 'react-router-dom';
 
 import { useSelector } from 'react-redux';
-import { drawerSelect } from '../redux/slices/drawerSlice.ts';
-import { ObjItemsState } from '../redux/slices/drawerSlice.ts';
+import { drawerSelect } from '../redux/slices/drawer/selectors.ts';
+import { ObjItemsState } from '../redux/slices/drawer/types.ts';
 
 import logo from '../assets/img/pizza-logo.svg';
 const headerLogo: string = String(logo);

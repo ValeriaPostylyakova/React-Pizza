@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../redux/store.ts';
-import { addItems, ObjItemsState } from '../../redux/slices/drawerSlice.ts';
+import { addItems } from '../../redux/slices/drawer/slice.ts';
+import { ObjItemsState } from '../../redux/slices/drawer/types.ts';
 
 export const typeNames = ['тонкое', 'традиционное'];
 

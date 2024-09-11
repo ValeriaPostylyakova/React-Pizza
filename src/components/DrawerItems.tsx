@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../redux/store.ts';
-import { clearDrawer } from '../redux/slices/drawerSlice.ts';
+import { clearDrawer } from '../redux/slices/drawer/slice.ts';
 
 import { DrawerItem } from './DrawerItem.tsx';
 import { AppDispatch } from '../redux/store.ts';
-import { ObjItemsState } from '../redux/slices/drawerSlice.ts';
+import { ObjItemsState } from '../redux/slices/drawer/types.ts';
 
 import Modal from './ModalConfirm/Modal.tsx';
 

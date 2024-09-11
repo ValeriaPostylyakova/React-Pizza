@@ -4,10 +4,10 @@ import {
     removeItem,
     addItems,
     decrementCount,
-} from '../redux/slices/drawerSlice.ts';
+} from '../redux/slices/drawer/slice.ts';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../redux/store.ts';
-import { ObjItemsState } from '../redux/slices/drawerSlice.ts';
+import { ObjItemsState } from '../redux/slices/drawer/types.ts';
 
 import Modal from './ModalConfirm/Modal.tsx';
 

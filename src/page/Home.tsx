@@ -8,9 +8,10 @@ import {
     setCategoryId,
     setPaginationPage,
     setFilterHome,
-} from '../redux/slices/filterSlice.ts';
+} from '../redux/slices/filter/slice.ts';
 
-import { fetchPizzas, PizzasItem } from '../redux/slices/pizzasSlice.ts';
+import { fetchPizzas } from '../redux/slices/pizzas/asyncAction.ts';
+import { PizzasItem } from '../redux/slices/pizzas/types.ts';
 
 import { useNavigate } from 'react-router-dom';
 

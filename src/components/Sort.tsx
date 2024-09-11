@@ -2,8 +2,8 @@ import * as React from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { AppDispatch, RootState } from '../redux/store.ts';
-import { setSortValue } from '../redux/slices/filterSlice.ts';
-import { ValueSort } from '../redux/slices/filterSlice.ts';
+import { setSortValue } from '../redux/slices/filter/slice.ts';
+import { ValueSort } from '../redux/slices/filter/types.ts';
 
 export type SortItem = {
     name: string;
