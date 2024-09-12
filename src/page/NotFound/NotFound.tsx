@@ -30,7 +30,7 @@ const notFound: React.FC = () => {
                         Мы не нашли эту страницу
                     </h1>
                     <p>Но знаем, где найти много всего вкусного</p>
-                    <Link to="/">
+                    <Link to="/React-Pizza">
                         <button>Back to menu</button>
                     </Link>
                     <p className={style.container__hero_error}>404 Error</p>

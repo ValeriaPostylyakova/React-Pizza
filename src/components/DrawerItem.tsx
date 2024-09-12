@@ -67,7 +67,7 @@ export const DrawerItem: React.FC<CartItemProps> = ({
     };
 
     return (
-        <>
+        <div>
             <Modal
                 showModal={showItemModal}
                 modalText="Вы действительно хотите удалить этот товар?"
@@ -75,18 +75,20 @@ export const DrawerItem: React.FC<CartItemProps> = ({
                 onClickModal={onClickModalItem}
             />
             <div className="cart__item">
-                <div className="cart__item-img">
-                    <img
-                        className="pizza-block__image"
-                        src={imageUrl}
-                        alt="Pizza"
-                    />
-                </div>
-                <div className="cart__item-info">
-                    <h3>{title}</h3>
-                    <p>
-                        {types}, {sizes} см.
-                    </p>
+                <div className="cart__pizza-container">
+                    <div className="cart__item-img">
+                        <img
+                            className="pizza-block__image"
+                            src={imageUrl}
+                            alt="Pizza"
+                        />
+                    </div>
+                    <div className="cart__item-info">
+                        <h3>{title}</h3>
+                        <p>
+                            {types}, {sizes} см.
+                        </p>
+                    </div>
                 </div>
                 <div className="cart__item-count">
                     <button
@@ -122,6 +124,6 @@ export const DrawerItem: React.FC<CartItemProps> = ({
                     </button>
                 </div>
             </div>
-        </>
+        </div>
     );
 };

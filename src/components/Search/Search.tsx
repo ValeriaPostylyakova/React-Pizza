@@ -43,7 +43,7 @@ export const Search: React.FC = () => {
 
     return (
         <div className={style.container}>
-            {pathname !== '/drawer' && (
+            {pathname !== 'React-Pizza/drawer' && (
                 <>
                     <img src={search} alt="search" />
 

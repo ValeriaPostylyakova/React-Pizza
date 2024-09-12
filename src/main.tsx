@@ -12,24 +12,30 @@ import './index.scss';
 
 const router = createBrowserRouter([
     {
-        path: '/',
+        path: '/React-Pizza',
         element: <App />,
         errorElement: <NotFound />,
     },
     {
-        path: 'drawer',
+        path: '/React-Pizza/drawer',
         element: <Drawer />,
         errorElement: <NotFound />,
     },
     {
-        path: 'pizza/:id',
+        path: '/React-Pizza/pizza/:id',
         element: <PizzaFullBlock />,
         errorElement: <NotFound />,
     },
 ]);
 
-createRoot(document.getElementById('root')).render(
-    <Provider store={store}>
-        <RouterProvider router={router} />
-    </Provider>
-);
+const rootElem = document.getElementById('root');
+
+if (rootElem) {
+    const root = createRoot(rootElem);
+
+    root.render(
+        <Provider store={store}>
+            <RouterProvider router={router} />
+        </Provider>
+    );
+}

@@ -78,7 +78,7 @@ export const PizzaBlock: React.FC<PizzaBlockProps> = ({
                     ))}
                 </ul>
             </div>
-            <Link to={`pizza/${id}`}>
+            <Link to={`React-Pizza/pizza/${id}`}>
                 <button className="pizza-block__info">Подробнее</button>
             </Link>
             <div className="pizza-block__bottom">

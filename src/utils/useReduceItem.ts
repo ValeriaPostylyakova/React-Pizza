@@ -1,5 +1,5 @@
-import { ObjItemsState } from '../redux/slices/drawerSlice';
-import { DrawerState } from '../redux/slices/drawerSlice';
+import { ObjItemsState } from '../redux/slices/drawer/types';
+import { DrawerState } from '../redux/slices/drawer/types';
 
 export const getReduceItem = (state: DrawerState) => {
     state.totalPrice = state.items.reduce(

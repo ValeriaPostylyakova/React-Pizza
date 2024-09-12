@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../redux/store.ts';
-import { clearDrawer } from '../redux/slices/drawer/slice.ts';
+import { clearDrawer, orderDrawer } from '../redux/slices/drawer/slice.ts';
 
 import { DrawerItem } from './DrawerItem.tsx';
 import { AppDispatch } from '../redux/store.ts';
@@ -33,6 +33,10 @@ const DrawerItems: React.FC = () => {
         setShowModal(true);
     };
 
+    const onClickButtonOrder = () => {
+        dispatch(orderDrawer());
+    };
+
     const onClickModal = () => {
         dispatch(clearDrawer());
         setShowModal(false);
@@ -50,7 +54,8 @@ const DrawerItems: React.FC = () => {
                 onClickModal={onClickModal}
                 modalText={'Вы действительно хотите очистить всю корзину?'}
             />
-            <div className={showModal ? 'content__active' : 'content'}>
+
+            <div className={showModal ? 'content__disabled' : 'content'}>
                 <div className="container container--cart">
                     <div className="cart">
                         <div className="cart__top">
@@ -68,34 +73,40 @@ const DrawerItems: React.FC = () => {
                         </div>
                         <div className="content__items">
                             {items.map((item: any) => (
-                                <DrawerItem
-                                    key={item.id}
-                                    {...item}
-                                    showModal={showModal}
-                                    setShowModal={() => setShowModal(false)}
-                                />
+                                <DrawerItem key={item.id} {...item} />
                             ))}
                         </div>
                         <div className="cart__bottom">
                             <div className="cart__bottom-details">
                                 <span>
-                                    Всего пицц: <b>{totalCount} шт.</b>
+                                    Всего пицц:
+                                    <p>
+                                        <b>{totalCount} шт.</b>
+                                    </p>
                                 </span>
                                 <span>
-                                    Сумма заказа: <b>{totalPrice} ₽</b>
+                                    Сумма заказа:
+                                    <p>
+                                        <b>{totalPrice} ₽</b>
+                                    </p>
                                 </span>
                             </div>
                             <div className="cart__bottom-buttons">
-                                <Link
-                                    to="/"
-                                    className="button button--outline button--add go-back-btn"
+                                <button className="cart__go_back">
+                                    <Link
+                                        to="/React-Pizza"
+                                        className="button button--outline button--add go-back-btn"
+                                    >
+                                        <img src={arrow} alt="arrow" />
+                                        <span>Вернуться назад</span>
+                                    </Link>
+                                </button>
+                                <button
+                                    onClick={onClickButtonOrder}
+                                    className="button pay-btn"
                                 >
-                                    <img src={arrow} alt="arrow" />
-                                    <span>Вернуться назад</span>
-                                </Link>
-                                <div className="button pay-btn">
-                                    <span>Оплатить сейчас</span>
-                                </div>
+                                    <span>Оформить заказ</span>
+                                </button>
                             </div>
                         </div>
                     </div>

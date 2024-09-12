@@ -20,7 +20,7 @@ export const FullPizza: React.FC = () => {
                 <img src={pizza.imageUrl} alt="pizza" />
             </div>
             <div className={style.pizza__right}>
-                <Link to="/">
+                <Link to="/React-Pizza">
                     <button>
                         <img src={arrow} alt="arrow" />
                         <p>Назад</p>

@@ -8,6 +8,7 @@ const { items, totalPrice } = getLSItem();
 const initialState: DrawerState = {
     items: items,
     totalPrice: totalPrice,
+    drawerComplete: false,
 };
 
 const drawerSlice = createSlice({
@@ -51,10 +52,20 @@ const drawerSlice = createSlice({
             state.items = [];
             state.totalPrice = 0;
         },
+        orderDrawer(state) {
+            state.drawerComplete = true;
+            state.items = [];
+            state.totalPrice = 0;
+        },
     },
 });
 
-export const { addItems, clearDrawer, removeItem, decrementCount } =
-    drawerSlice.actions;
+export const {
+    addItems,
+    clearDrawer,
+    removeItem,
+    decrementCount,
+    orderDrawer,
+} = drawerSlice.actions;
 
 export default drawerSlice.reducer;

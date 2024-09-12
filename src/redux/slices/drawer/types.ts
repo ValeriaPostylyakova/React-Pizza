@@ -1,6 +1,7 @@
 export interface DrawerState {
     totalPrice: number;
     items: ObjItemsState[];
+    drawerComplete: boolean;
 }
 
 export type ObjItemsState = {

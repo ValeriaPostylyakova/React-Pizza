@@ -32,7 +32,7 @@ export const Header: React.FC = () => {
     return (
         <header className="header">
             <div className="container">
-                <Link to="/">
+                <Link to="/React-Pizza">
                     <div className="header__logo">
                         <img width="38" src={headerLogo} alt="Pizza logo" />
                         <div>
