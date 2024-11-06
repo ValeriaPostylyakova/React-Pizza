@@ -31,7 +31,7 @@
 + React Content Loader - библиотека для создания скелетонов
 + Code Splitting - разделение кода
 + Prettier - инструмент для автоформатирования кода
-+ seWhyDidYouUpdate, Lodash.Debounce - хуки для оптимизации
++ useWhyDidYouUpdate, Lodash.Debounce - хуки для оптимизации
 + LocalStorage - хранилище для корзины
 + Vite - инструмент сборки
 
